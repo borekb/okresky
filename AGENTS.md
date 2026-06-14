@@ -22,6 +22,8 @@ Scope includes roads I., II. and III. class, plus lower local roads only when th
 - Kralovehradecky kraj road-maintenance site uses WordPress REST API at `<https://uskhk.eu/wp-json/wp/v2/>`.
 - Vysocina KSUSV site uses Vismo/Webhouse, not WordPress. Useful RSS: `<https://www.ksusv.cz/rss/>`.
 - Vysocina map of roadworks is linked from the KSUSV "Silnicni stavby na Vysocine" page.
+- Regional additions outside Pardubicky APDOS currently live in `resources/processed/regional-road-additions.json` and `resources/processed/regional-road-backfill-2026-06-14.json`; `scripts/build-road-data.mjs` appends all configured processed regional files.
+- KSUS Stredocesky kraj is WordPress-based at `<https://ksus.cz/wp-json/wp/v2/>`; use it for Kutna Hora / Zruc / Sazava candidates.
 
 ## Known caveats
 
@@ -29,3 +31,5 @@ Scope includes roads I., II. and III. class, plus lower local roads only when th
 - APDOS dates are not normalized; completion dates appear as `YYYY`, `MM/YYYY`, `DD.MM.YYYY`, and variants with spaces.
 - Some APDOS rows use placeholder coordinates around `50.0, 14.7`; do not treat those as real locations.
 - Year assignment currently uses completion year (`TerminRealizaceDo`). For "roads reconstructed in year X", consider also an `active_years` interpretation for multi-year projects.
+- Some Vysocina additions are from planning articles, not completion reports. Keep their `status` caveat until a later source verifies completion.
+- The 2026-06-14 regional backfill added 40 rows and all of those received OSM geometry matches, but the KSUSV rows are still planning-source candidates.

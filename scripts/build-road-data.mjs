@@ -1,6 +1,10 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 const inputPath = 'resources/processed/pardubicky-kraj-apdos-candidates.tsv';
+const regionalAdditionPaths = [
+  'resources/processed/regional-road-additions.json',
+  'resources/processed/regional-road-backfill-2026-06-14.json',
+];
 const outputPath = 'src/data/roads.json';
 
 const text = readFileSync(inputPath, 'utf8').trim();
@@ -70,7 +74,7 @@ function slug(text, index) {
   return `${base || 'silnice'}-${String(index + 1).padStart(3, '0')}`;
 }
 
-const roads = lines.map((line, index) => {
+const apdosRoads = lines.map((line, index) => {
   const columns = line.split('\t');
   const record = Object.fromEntries(headers.map((header, columnIndex) => [header, columns[columnIndex] ?? '']));
   const lat = Number(value(record, 'lat'));
@@ -105,10 +109,17 @@ const roads = lines.map((line, index) => {
   };
 });
 
+const availableRegionalAdditionPaths = regionalAdditionPaths.filter((path) => existsSync(path));
+const regionalRoads = availableRegionalAdditionPaths.flatMap((path) => {
+  const data = JSON.parse(readFileSync(path, 'utf8'));
+  return data.roads ?? [];
+});
+const roads = [...apdosRoads, ...regionalRoads];
 const years = [...new Set(roads.map((road) => road.completionYear))].sort();
 const output = {
   generatedAt: new Date().toISOString(),
-  source: inputPath,
+  source:
+    availableRegionalAdditionPaths.length > 0 ? [inputPath, ...availableRegionalAdditionPaths].join(' + ') : inputPath,
   roads,
   summary: {
     total: roads.length,

@@ -96,7 +96,7 @@ const output = {
     maxMatchDistanceMeters,
     nearbyWayDistanceMeters,
     maxGeometryLengthMeters,
-    note: 'Matched by normalized OSM road ref and APDOS source point. This is more precise than synthetic display segments, but not yet manually verified project extents.',
+    note: 'Matched by normalized OSM road ref and source point. This is more precise than synthetic display segments, but not yet manually verified project extents.',
   },
   summary: {
     candidates: candidates.length,
@@ -114,7 +114,7 @@ console.log(`Matched ${output.summary.matched}/${output.summary.candidates} road
 console.log(`Wrote ${outputPath} and ${processedPath}`);
 
 function buildOverpassQuery([south, west, north, east], refs) {
-  const refPattern = `(^|;| |/)(${refs.map(escapeRegex).join('|')})(;| |$)`;
+  const refPattern = `(^|;| |/)(0*(${refs.map(escapeRegex).join('|')}))(;| |$)`;
 
   return `
 [out:json][timeout:180];
