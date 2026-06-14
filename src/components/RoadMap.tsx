@@ -8,22 +8,14 @@ type LayerGroup = import('leaflet').LayerGroup;
 
 const PARDUBICE: [number, number] = [50.0343, 15.7812];
 
-const KIND_COLORS: Record<Road['kind'], string> = {
-  bridge: '#7c3aed',
-  connector: '#0f766e',
-  intersection: '#d97706',
-  other: '#64748b',
-  reconstruction: '#2563eb',
-  repair: '#dc2626',
-  structure: '#9333ea',
-};
-
 export function RoadMap({
   roads,
+  yearRange,
   selectedRoadId,
   onSelectRoad,
 }: {
   roads: Road[];
+  yearRange: { min: number; max: number };
   selectedRoadId: string | null;
   onSelectRoad: (roadId: string) => void;
 }) {
@@ -61,7 +53,7 @@ export function RoadMap({
 
       markerLayerRef.current = L.layerGroup().addTo(map);
       mapRef.current = map;
-      renderMarkers(L, markerLayerRef.current, roads, selectedRoadId, onSelectRoad);
+      renderSegments(L, markerLayerRef.current, roads, yearRange, selectedRoadId, onSelectRoad);
       fitRoads(L, map, roads);
     }
 
@@ -81,8 +73,8 @@ export function RoadMap({
     const map = mapRef.current;
     if (!L || !layer || !map) return;
 
-    renderMarkers(L, layer, roads, selectedRoadId, onSelectRoad);
-  }, [roads, selectedRoadId, onSelectRoad]);
+    renderSegments(L, layer, roads, yearRange, selectedRoadId, onSelectRoad);
+  }, [roads, yearRange, selectedRoadId, onSelectRoad]);
 
   useEffect(() => {
     const L = leafletRef.current;
@@ -95,10 +87,11 @@ export function RoadMap({
   return <div ref={containerRef} className="map-canvas" aria-label="Mapa rekonstruovaných silnic" />;
 }
 
-function renderMarkers(
+function renderSegments(
   L: LeafletModule,
   layer: LayerGroup,
   roads: Road[],
+  yearRange: { min: number; max: number },
   selectedRoadId: string | null,
   onSelectRoad: (roadId: string) => void,
 ) {
@@ -106,29 +99,37 @@ function renderMarkers(
 
   for (const road of roads) {
     const selected = road.id === selectedRoadId;
-    const color = KIND_COLORS[road.kind];
-
-    const marker = L.circleMarker([road.lat, road.lon], {
-      radius: selected ? 9 : 6,
-      color: selected ? '#111827' : '#ffffff',
-      fillColor: color,
-      fillOpacity: selected ? 0.95 : 0.78,
-      opacity: 1,
-      weight: selected ? 3 : 2,
+    const color = yearColor(road.completionYear, yearRange);
+    const path = segmentPath(road);
+    const outline = L.polyline(path, {
+      color: selected ? '#0f172a' : '#ffffff',
+      opacity: selected ? 0.92 : 0.82,
+      weight: selected ? 12 : 9,
+      lineCap: 'round',
+      lineJoin: 'round',
+    });
+    const segment = L.polyline(path, {
+      color,
+      opacity: selected ? 1 : 0.86,
+      weight: selected ? 7 : 5,
+      lineCap: 'round',
+      lineJoin: 'round',
     });
 
-    marker.bindPopup(popupHtml(road), {
+    segment.bindPopup(popupHtml(road), {
       closeButton: false,
       className: 'road-popup',
       maxWidth: 320,
     });
-    marker.bindTooltip(road.title, {
+    segment.bindTooltip(road.title, {
       direction: 'top',
       offset: [0, -8],
       opacity: 0.92,
     });
-    marker.on('click', () => onSelectRoad(road.id));
-    marker.addTo(layer);
+    segment.on('click', () => onSelectRoad(road.id));
+    outline.on('click', () => onSelectRoad(road.id));
+    outline.addTo(layer);
+    segment.addTo(layer);
   }
 }
 
@@ -147,24 +148,14 @@ function fitRoads(L: LeafletModule, map: LeafletMap, roads: Road[]) {
 
 function popupHtml(road: Road) {
   const dates = [road.realizationFrom, road.realizationTo].filter(Boolean).join(' - ');
-  const cost = road.totalCost ?? road.costExVat;
 
   return `
     <div class="road-popup-content">
       <strong>${escapeHtml(road.title)}</strong>
       <span>${escapeHtml(road.road)} · ${road.completionYear}</span>
       ${dates ? `<span>${escapeHtml(dates)}</span>` : ''}
-      ${cost ? `<span>${formatCurrency(cost)}</span>` : ''}
     </div>
   `;
-}
-
-function formatCurrency(value: number) {
-  return new Intl.NumberFormat('cs-CZ', {
-    maximumFractionDigits: 0,
-    style: 'currency',
-    currency: 'CZK',
-  }).format(value);
 }
 
 function escapeHtml(value: string) {
@@ -174,4 +165,37 @@ function escapeHtml(value: string) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function segmentPath(road: Road): [[number, number], [number, number]] {
+  const bearing = ((hashString(road.id) % 120) - 60) * (Math.PI / 180);
+  const lengthKm = road.completionYear >= 2024 ? 2.2 : 1.7;
+  const halfLat = (Math.cos(bearing) * lengthKm) / 111 / 2;
+  const halfLon = (Math.sin(bearing) * lengthKm) / (111 * Math.cos((road.lat * Math.PI) / 180)) / 2;
+
+  return [
+    [road.lat - halfLat, road.lon - halfLon],
+    [road.lat + halfLat, road.lon + halfLon],
+  ];
+}
+
+function hashString(value: string) {
+  let hash = 0;
+  for (const char of value) {
+    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  }
+
+  return hash;
+}
+
+function yearColor(year: number, range: { min: number; max: number }) {
+  const span = Math.max(1, range.max - range.min);
+  const recency = (year - range.min) / span;
+  const oldColor = [120, 129, 126];
+  const newColor = [22, 163, 74];
+  const rgb = oldColor.map((oldChannel, index) =>
+    Math.round(oldChannel + ((newColor[index] ?? oldChannel) - oldChannel) * recency),
+  );
+
+  return `rgb(${rgb.join(' ')})`;
 }

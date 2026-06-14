@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T11:29:20.058Z",
+  "generatedAt": "2026-06-14T11:41:58.906Z",
   "source": "resources/processed/pardubicky-kraj-apdos-candidates.tsv",
   "roads": [
     {
@@ -17,6 +17,7 @@
       "costExVat": 3178556,
       "totalCost": 4416511,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -36,6 +37,7 @@
       "costExVat": 3839596,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -55,6 +57,7 @@
       "costExVat": 7218902,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -74,6 +77,7 @@
       "costExVat": 4287058,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -93,6 +97,7 @@
       "costExVat": 6751810,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -112,6 +117,7 @@
       "costExVat": 4925661,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -131,6 +137,7 @@
       "costExVat": 17997394,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -150,6 +157,7 @@
       "costExVat": 9691297,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -169,6 +177,7 @@
       "costExVat": 6988590,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -188,6 +197,7 @@
       "costExVat": 4308987,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -207,6 +217,7 @@
       "costExVat": 10901102,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -226,6 +237,7 @@
       "costExVat": 2261162,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -245,6 +257,7 @@
       "costExVat": 1988888,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -264,6 +277,7 @@
       "costExVat": 3783375,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -283,6 +297,7 @@
       "costExVat": 24360000,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -302,6 +317,7 @@
       "costExVat": 10550437,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -321,6 +337,7 @@
       "costExVat": 17342103,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -340,6 +357,7 @@
       "costExVat": 9180000,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -359,6 +377,7 @@
       "costExVat": 342382,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -378,6 +397,7 @@
       "costExVat": 11610534,
       "totalCost": 15861698,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -397,6 +417,7 @@
       "costExVat": 15782533,
       "totalCost": 19662724,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -416,6 +437,7 @@
       "costExVat": 5808555,
       "totalCost": 10741781,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -435,6 +457,7 @@
       "costExVat": 1014596,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -454,6 +477,7 @@
       "costExVat": 4020756,
       "totalCost": 4865115,
       "kind": "other",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -473,6 +497,7 @@
       "costExVat": 7702500,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -492,6 +517,7 @@
       "costExVat": 13992025,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -511,6 +537,7 @@
       "costExVat": 0,
       "totalCost": 34279165,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -530,6 +557,7 @@
       "costExVat": 17643818,
       "totalCost": 23509664,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -549,6 +577,7 @@
       "costExVat": 2400000,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -568,6 +597,7 @@
       "costExVat": 5883046,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -587,6 +617,7 @@
       "costExVat": 1141612,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -606,6 +637,7 @@
       "costExVat": 3861354,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -625,6 +657,7 @@
       "costExVat": 909091,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -644,6 +677,7 @@
       "costExVat": 125803580,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -663,6 +697,7 @@
       "costExVat": 44495672,
       "totalCost": 54015248,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -682,6 +717,7 @@
       "costExVat": 0,
       "totalCost": 16204838,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -701,6 +737,7 @@
       "costExVat": 38285108,
       "totalCost": 47694529,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -720,6 +757,7 @@
       "costExVat": 33442875,
       "totalCost": 42851176,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -739,6 +777,7 @@
       "costExVat": 10443043,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -758,6 +797,7 @@
       "costExVat": 12969556,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -777,6 +817,7 @@
       "costExVat": 10026955,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -796,6 +837,7 @@
       "costExVat": 10518928,
       "totalCost": 13641756,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -815,6 +857,7 @@
       "costExVat": 10068165,
       "totalCost": 13251927,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -834,6 +877,7 @@
       "costExVat": 15267558,
       "totalCost": 19891797,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -853,6 +897,7 @@
       "costExVat": 9030969,
       "totalCost": 12419583,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -872,6 +917,7 @@
       "costExVat": 10117509,
       "totalCost": 13016950,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -891,6 +937,7 @@
       "costExVat": 24716286,
       "totalCost": 33212296,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -910,6 +957,7 @@
       "costExVat": 199178164,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -929,6 +977,7 @@
       "costExVat": 58838527,
       "totalCost": 94320672,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -948,6 +997,7 @@
       "costExVat": 82156042,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -967,6 +1017,7 @@
       "costExVat": 264420679,
       "totalCost": 335306321,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -986,6 +1037,7 @@
       "costExVat": 29228570,
       "totalCost": 37843350,
       "kind": "connector",
+      "drivingSegment": false,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1005,6 +1057,7 @@
       "costExVat": 151190619,
       "totalCost": 186207302,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1024,6 +1077,7 @@
       "costExVat": 108878550,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1043,6 +1097,7 @@
       "costExVat": 27734707,
       "totalCost": 35261907,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1062,6 +1117,7 @@
       "costExVat": 130293492,
       "totalCost": 163259217,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1081,6 +1137,7 @@
       "costExVat": 124407618,
       "totalCost": 155353746,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1100,6 +1157,7 @@
       "costExVat": 72408722,
       "totalCost": 88395116,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1119,6 +1177,7 @@
       "costExVat": 305785,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1138,6 +1197,7 @@
       "costExVat": 93687137,
       "totalCost": 127066921,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1157,6 +1217,7 @@
       "costExVat": 78060424,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1176,6 +1237,7 @@
       "costExVat": 48866980,
       "totalCost": 64431274,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1195,6 +1257,7 @@
       "costExVat": 138269942,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1214,6 +1277,7 @@
       "costExVat": 147768564,
       "totalCost": 196333203,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1233,6 +1297,7 @@
       "costExVat": 33125536,
       "totalCost": 43068692,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1252,6 +1317,7 @@
       "costExVat": 61431259,
       "totalCost": 76442167,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1271,6 +1337,7 @@
       "costExVat": 57169378,
       "totalCost": 68873045,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1290,6 +1357,7 @@
       "costExVat": 0,
       "totalCost": 35960091,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1309,6 +1377,7 @@
       "costExVat": 55250000,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1328,6 +1397,7 @@
       "costExVat": 30216204,
       "totalCost": 37514635,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1347,6 +1417,7 @@
       "costExVat": 0,
       "totalCost": 11857935,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1366,6 +1437,7 @@
       "costExVat": 25153113,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1385,6 +1457,7 @@
       "costExVat": 6157025,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1404,6 +1477,7 @@
       "costExVat": 0,
       "totalCost": 30558576,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1423,6 +1497,7 @@
       "costExVat": 5705105,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1442,6 +1517,7 @@
       "costExVat": 49524878,
       "totalCost": 66667203,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1461,6 +1537,7 @@
       "costExVat": 4759314,
       "totalCost": 6723511,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1480,6 +1557,7 @@
       "costExVat": 28429457,
       "totalCost": 35801872,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1499,6 +1577,7 @@
       "costExVat": 0,
       "totalCost": 12093726,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1518,6 +1597,7 @@
       "costExVat": 5899274,
       "totalCost": 8867699,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1537,6 +1617,7 @@
       "costExVat": 17611116,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1556,6 +1637,7 @@
       "costExVat": 72262047,
       "totalCost": 95110033,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1575,6 +1657,7 @@
       "costExVat": 50415161,
       "totalCost": 65249250,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1594,6 +1677,7 @@
       "costExVat": 7085000,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1613,6 +1697,7 @@
       "costExVat": 15000000,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1632,6 +1717,7 @@
       "costExVat": 394195789,
       "totalCost": 0,
       "kind": "connector",
+      "drivingSegment": false,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1651,6 +1737,7 @@
       "costExVat": 10601818,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1670,6 +1757,7 @@
       "costExVat": 6946644,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1689,6 +1777,7 @@
       "costExVat": 8591475,
       "totalCost": 12005568,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1708,6 +1797,7 @@
       "costExVat": 4251866,
       "totalCost": 5152018,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1727,6 +1817,7 @@
       "costExVat": 6157025,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1746,6 +1837,7 @@
       "costExVat": 1973468,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1765,6 +1857,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1784,6 +1877,7 @@
       "costExVat": 14647119,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1803,6 +1897,7 @@
       "costExVat": 1921487,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1822,6 +1917,7 @@
       "costExVat": 6677860,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1841,6 +1937,7 @@
       "costExVat": 2478927,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1860,6 +1957,7 @@
       "costExVat": 9755919,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1879,6 +1977,7 @@
       "costExVat": 3949948,
       "totalCost": 5416200,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1898,6 +1997,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1917,6 +2017,7 @@
       "costExVat": 8985853,
       "totalCost": 11555339,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1936,6 +2037,7 @@
       "costExVat": 7309492,
       "totalCost": 10055410,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1955,6 +2057,7 @@
       "costExVat": 3481240,
       "totalCost": 0,
       "kind": "connector",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1974,6 +2077,7 @@
       "costExVat": 12083826,
       "totalCost": 14727353,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -1993,6 +2097,7 @@
       "costExVat": 8855126,
       "totalCost": 11366204,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2012,6 +2117,7 @@
       "costExVat": 4105200,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2031,6 +2137,7 @@
       "costExVat": 32453129,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2050,6 +2157,7 @@
       "costExVat": 14037616,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2069,6 +2177,7 @@
       "costExVat": 19539042,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2088,6 +2197,7 @@
       "costExVat": 41665353,
       "totalCost": 53757509,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2107,6 +2217,7 @@
       "costExVat": 4114486,
       "totalCost": 5063858,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2126,6 +2237,7 @@
       "costExVat": 41009366,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2145,6 +2257,7 @@
       "costExVat": 22470000,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2164,6 +2277,7 @@
       "costExVat": 1840030,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2183,6 +2297,7 @@
       "costExVat": 12074373,
       "totalCost": 15101815,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2202,6 +2317,7 @@
       "costExVat": 3228592,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2221,6 +2337,7 @@
       "costExVat": 1407850,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2240,6 +2357,7 @@
       "costExVat": 4066116,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2259,6 +2377,7 @@
       "costExVat": 5889975,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2278,6 +2397,7 @@
       "costExVat": 5869574,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2297,6 +2417,7 @@
       "costExVat": 5150742,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2316,6 +2437,7 @@
       "costExVat": 5890007,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2335,6 +2457,7 @@
       "costExVat": 6685441,
       "totalCost": 8447567,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2354,6 +2477,7 @@
       "costExVat": 30750602,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2373,6 +2497,7 @@
       "costExVat": 7330100,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2392,6 +2517,7 @@
       "costExVat": 6949107,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2411,6 +2537,7 @@
       "costExVat": 10408698,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2430,6 +2557,7 @@
       "costExVat": 18310785,
       "totalCost": 23130446,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2449,6 +2577,7 @@
       "costExVat": 8634045,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2468,6 +2597,7 @@
       "costExVat": 5873989,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2487,6 +2617,7 @@
       "costExVat": 8431134,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2506,6 +2637,7 @@
       "costExVat": 9787279,
       "totalCost": 12241302,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2525,6 +2657,7 @@
       "costExVat": 2971074,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2544,6 +2677,7 @@
       "costExVat": 11187251,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2563,6 +2697,7 @@
       "costExVat": 12334711,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2582,6 +2717,7 @@
       "costExVat": 12644628,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2601,6 +2737,7 @@
       "costExVat": 0,
       "totalCost": 8340194,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2620,6 +2757,7 @@
       "costExVat": 4485000,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2639,6 +2777,7 @@
       "costExVat": 8044917,
       "totalCost": 10238920,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2658,6 +2797,7 @@
       "costExVat": 5289798,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2677,6 +2817,7 @@
       "costExVat": 16937218,
       "totalCost": 25005732,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2696,6 +2837,7 @@
       "costExVat": 19314588,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2715,6 +2857,7 @@
       "costExVat": 19179698,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2734,6 +2877,7 @@
       "costExVat": 1132231,
       "totalCost": 1478482,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2753,6 +2897,7 @@
       "costExVat": 0,
       "totalCost": 3775629,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2772,6 +2917,7 @@
       "costExVat": 207338021,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": true,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2791,6 +2937,7 @@
       "costExVat": 14035864,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2810,6 +2957,7 @@
       "costExVat": 2353000,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2829,6 +2977,7 @@
       "costExVat": 3599400,
       "totalCost": 0,
       "kind": "structure",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2848,6 +2997,7 @@
       "costExVat": 18274660,
       "totalCost": 23737877,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2867,6 +3017,7 @@
       "costExVat": 7489488,
       "totalCost": 11687781,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2886,6 +3037,7 @@
       "costExVat": 15493334,
       "totalCost": 22193086,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2905,6 +3057,7 @@
       "costExVat": 22974300,
       "totalCost": 44690223,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2924,6 +3077,7 @@
       "costExVat": 0,
       "totalCost": 55597797,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2943,6 +3097,7 @@
       "costExVat": 21239724,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2962,6 +3117,7 @@
       "costExVat": 32196146,
       "totalCost": 40344934,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -2981,6 +3137,7 @@
       "costExVat": 63555783,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3000,6 +3157,7 @@
       "costExVat": 16798400,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3019,6 +3177,7 @@
       "costExVat": 45499040,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3038,6 +3197,7 @@
       "costExVat": 19667670,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3057,6 +3217,7 @@
       "costExVat": 10297516,
       "totalCost": 16266190,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3076,6 +3237,7 @@
       "costExVat": 21780908,
       "totalCost": 28932236,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3095,6 +3257,7 @@
       "costExVat": 20575874,
       "totalCost": 29712116,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3114,6 +3277,7 @@
       "costExVat": 11550099,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3133,6 +3297,7 @@
       "costExVat": 11959595,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3152,6 +3317,7 @@
       "costExVat": 29257130,
       "totalCost": 36670635,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3171,6 +3337,7 @@
       "costExVat": 0,
       "totalCost": 53585699,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3190,6 +3357,7 @@
       "costExVat": 6671371,
       "totalCost": 10613118,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3209,6 +3377,7 @@
       "costExVat": 0,
       "totalCost": 20718229,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3228,6 +3397,7 @@
       "costExVat": 5885000,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3247,6 +3417,7 @@
       "costExVat": 26964547,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3266,6 +3437,7 @@
       "costExVat": 26351351,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3285,6 +3457,7 @@
       "costExVat": 42349841,
       "totalCost": 53069312,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3304,6 +3477,7 @@
       "costExVat": 42349841,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3323,6 +3497,7 @@
       "costExVat": 20027066,
       "totalCost": 27770191,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3342,6 +3517,7 @@
       "costExVat": 0,
       "totalCost": 16936110,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3361,6 +3537,7 @@
       "costExVat": 127165833,
       "totalCost": 190493828,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3380,6 +3557,7 @@
       "costExVat": 0,
       "totalCost": 16354468,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3399,6 +3577,7 @@
       "costExVat": 19960439,
       "totalCost": 0,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3418,6 +3597,7 @@
       "costExVat": 34584039,
       "totalCost": 46499561,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3437,6 +3617,7 @@
       "costExVat": 21175773,
       "totalCost": 29137958,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3456,6 +3637,7 @@
       "costExVat": 17939454,
       "totalCost": 25461393,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3475,6 +3657,7 @@
       "costExVat": 13730462,
       "totalCost": 23261647,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3494,6 +3677,7 @@
       "costExVat": 0,
       "totalCost": 71912255,
       "kind": "reconstruction",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3513,6 +3697,7 @@
       "costExVat": 490082,
       "totalCost": 0,
       "kind": "repair",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3532,6 +3717,7 @@
       "costExVat": 13557464,
       "totalCost": 0,
       "kind": "bridge",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3551,6 +3737,7 @@
       "costExVat": 5839731,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3570,6 +3757,7 @@
       "costExVat": 11888400,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3589,6 +3777,7 @@
       "costExVat": 5795218,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3608,6 +3797,7 @@
       "costExVat": 1091726,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3627,6 +3817,7 @@
       "costExVat": 5851491,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3646,6 +3837,7 @@
       "costExVat": 6323779,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3665,6 +3857,7 @@
       "costExVat": 35592427,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3684,6 +3877,7 @@
       "costExVat": 7263945,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3703,6 +3897,7 @@
       "costExVat": 15440000,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3722,6 +3917,7 @@
       "costExVat": 9028568,
       "totalCost": 12059627,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3741,6 +3937,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3760,6 +3957,7 @@
       "costExVat": 12427200,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3779,6 +3977,7 @@
       "costExVat": 18890000,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3798,6 +3997,7 @@
       "costExVat": 12755841,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3817,6 +4017,7 @@
       "costExVat": 14665318,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3836,6 +4037,7 @@
       "costExVat": 6201334,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3855,6 +4057,7 @@
       "costExVat": 13388429,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3874,6 +4077,7 @@
       "costExVat": 545000,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3893,6 +4097,7 @@
       "costExVat": 5878108,
       "totalCost": 7284817,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3912,6 +4117,7 @@
       "costExVat": 5748976,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3931,6 +4137,7 @@
       "costExVat": 0,
       "totalCost": 15049494,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3950,6 +4157,7 @@
       "costExVat": 7959672,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3969,6 +4177,7 @@
       "costExVat": 10660091,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -3988,6 +4197,7 @@
       "costExVat": 7160000,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4007,6 +4217,7 @@
       "costExVat": 11884000,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4026,6 +4237,7 @@
       "costExVat": 11157024,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4045,6 +4257,7 @@
       "costExVat": 5397650,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4064,6 +4277,7 @@
       "costExVat": 45494301,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4083,6 +4297,7 @@
       "costExVat": 1885750,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4102,6 +4317,7 @@
       "costExVat": 17219633,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4121,6 +4337,7 @@
       "costExVat": 0,
       "totalCost": 32262341,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4140,6 +4357,7 @@
       "costExVat": 7200000,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4159,6 +4377,7 @@
       "costExVat": 3025000,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4178,6 +4397,7 @@
       "costExVat": 12833182,
       "totalCost": 17576691,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4197,6 +4417,7 @@
       "costExVat": 4157051,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4216,6 +4437,7 @@
       "costExVat": 5875478,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4235,6 +4457,7 @@
       "costExVat": 6620200,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4254,6 +4477,7 @@
       "costExVat": 5900261,
       "totalCost": 7273054,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4273,6 +4497,7 @@
       "costExVat": 8968735,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4292,6 +4517,7 @@
       "costExVat": 13008233,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4311,6 +4537,7 @@
       "costExVat": 5889353,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4330,6 +4557,7 @@
       "costExVat": 32075507,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4349,6 +4577,7 @@
       "costExVat": 21479566,
       "totalCost": 28616697,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4368,6 +4597,7 @@
       "costExVat": 9696576,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4387,6 +4617,7 @@
       "costExVat": 2644847,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4406,6 +4637,7 @@
       "costExVat": 11015629,
       "totalCost": 15139947,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4425,6 +4657,7 @@
       "costExVat": 2786002,
       "totalCost": 3371062,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4444,6 +4677,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4463,6 +4697,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4482,6 +4717,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "intersection",
+      "drivingSegment": false,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4501,6 +4737,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"
@@ -4520,6 +4757,7 @@
       "costExVat": 0,
       "totalCost": 0,
       "kind": "other",
+      "drivingSegment": true,
       "motorwayContext": false,
       "sourceDataset": "apdos-pardubice",
       "sourceUrl": "https://apdos.roadmedia.cz/json/data-pardubice.json"

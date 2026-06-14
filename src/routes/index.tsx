@@ -23,6 +23,7 @@ export interface Road {
   costExVat: number | null;
   totalCost: number | null;
   kind: RoadKind;
+  drivingSegment: boolean;
   motorwayContext: boolean;
   sourceDataset: string;
   sourceUrl: string;
@@ -66,19 +67,24 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   const [year, setYear] = useState<number | 'all'>('all');
-  const [kind, setKind] = useState<RoadKind | 'all'>('all');
   const [roadClass, setRoadClass] = useState<RoadClass | 'all'>('all');
   const [query, setQuery] = useState('');
   const [includeMotorwayContext, setIncludeMotorwayContext] = useState(true);
+  const [showNonSegments, setShowNonSegments] = useState(false);
   const [selectedRoadId, setSelectedRoadId] = useState<string | null>(null);
 
   const years = roadData.summary.years;
+  const segmentYears = roadData.roads.filter((road) => road.drivingSegment).map((road) => road.completionYear);
+  const yearRange = {
+    min: Math.min(...segmentYears),
+    max: Math.max(...segmentYears),
+  };
   const normalizedQuery = query.trim().toLocaleLowerCase('cs-CZ');
 
   const filteredRoads = useMemo(() => {
     return roadData.roads.filter((road) => {
+      if (!showNonSegments && !road.drivingSegment) return false;
       if (year !== 'all' && road.completionYear !== year) return false;
-      if (kind !== 'all' && road.kind !== kind) return false;
       if (roadClass !== 'all' && road.roadClass !== roadClass) return false;
       if (!includeMotorwayContext && road.motorwayContext) return false;
       if (normalizedQuery.length > 0) {
@@ -90,11 +96,10 @@ function HomePage() {
 
       return true;
     });
-  }, [includeMotorwayContext, kind, normalizedQuery, roadClass, year]);
+  }, [includeMotorwayContext, normalizedQuery, roadClass, showNonSegments, year]);
 
   const mappedRoads = filteredRoads.filter((road) => road.locationQuality === 'source');
   const selectedRoad = filteredRoads.find((road) => road.id === selectedRoadId) ?? filteredRoads[0] ?? null;
-  const totalCost = filteredRoads.reduce((sum, road) => sum + (road.totalCost ?? road.costExVat ?? 0), 0);
 
   return (
     <main className="app-shell">
@@ -147,19 +152,9 @@ function HomePage() {
           </div>
 
           <div className="kind-tabs" role="group" aria-label="Typ stavby">
-            <button className={kind === 'all' ? 'active' : ''} type="button" onClick={() => setKind('all')}>
-              Vše
-            </button>
-            {Object.entries(KIND_LABELS).map(([value, label]) => (
-              <button
-                key={value}
-                className={kind === value ? 'active' : ''}
-                type="button"
-                onClick={() => setKind(value as RoadKind)}
-              >
-                {label}
-              </button>
-            ))}
+            <span className="legend-chip latest">Nejnovější</span>
+            <span className="legend-chip mid">Starší</span>
+            <span className="legend-chip old">Nejstarší</span>
           </div>
 
           <label className="toggle-row">
@@ -170,12 +165,20 @@ function HomePage() {
             />
             Včetně návazných oprav u D35
           </label>
+          <label className="toggle-row muted-toggle">
+            <input
+              type="checkbox"
+              checked={showNonSegments}
+              onChange={(event) => setShowNonSegments(event.target.checked)}
+            />
+            Zobrazit i mosty, křižovatky a napojení
+          </label>
         </section>
 
         <section className="stats" aria-label="Souhrn">
-          <Metric icon={MapPinned} label="Záznamy" value={filteredRoads.length.toLocaleString('cs-CZ')} />
+          <Metric icon={MapPinned} label="Úseky" value={filteredRoads.length.toLocaleString('cs-CZ')} />
           <Metric icon={RouteIcon} label="V mapě" value={mappedRoads.length.toLocaleString('cs-CZ')} />
-          <Metric icon={CalendarDays} label="Náklady" value={formatShortCurrency(totalCost)} />
+          <Metric icon={CalendarDays} label="Roky" value={formatYearSpan(filteredRoads)} />
         </section>
 
         <section className="road-list" aria-label="Seznam silnic">
@@ -186,7 +189,9 @@ function HomePage() {
               type="button"
               onClick={() => setSelectedRoadId(road.id)}
             >
-              <span className={`year-pill kind-${road.kind}`}>{road.completionYear}</span>
+              <span className="year-pill" style={{ background: yearColor(road.completionYear, yearRange) }}>
+                {road.completionYear}
+              </span>
               <span className="road-item-body">
                 <strong>{road.title}</strong>
                 <span>
@@ -200,7 +205,12 @@ function HomePage() {
       </aside>
 
       <section className="map-region">
-        <RoadMap roads={mappedRoads} selectedRoadId={selectedRoad?.id ?? null} onSelectRoad={setSelectedRoadId} />
+        <RoadMap
+          roads={mappedRoads}
+          yearRange={yearRange}
+          selectedRoadId={selectedRoad?.id ?? null}
+          onSelectRoad={setSelectedRoadId}
+        />
 
         {selectedRoad && (
           <article className="detail-panel" aria-label="Detail vybrané silnice">
@@ -212,7 +222,7 @@ function HomePage() {
               </p>
             </div>
             <div className="detail-actions">
-              <span>{formatCurrency(selectedRoad.totalCost ?? selectedRoad.costExVat)}</span>
+              <span>{selectedRoad.drivingSegment ? 'Silniční úsek' : KIND_LABELS[selectedRoad.kind]}</span>
               <a href={selectedRoad.sourceUrl} target="_blank" rel="noreferrer">
                 Zdroj <ExternalLink size={14} aria-hidden />
               </a>
@@ -246,20 +256,24 @@ function formatDates(road: Road) {
   return [road.realizationFrom, road.realizationTo].filter(Boolean).join(' - ') || road.status;
 }
 
-function formatCurrency(value: number | null) {
-  if (!value) return 'Náklady neuvedeny';
+function formatYearSpan(roads: Road[]) {
+  if (roads.length === 0) return '-';
 
-  return new Intl.NumberFormat('cs-CZ', {
-    maximumFractionDigits: 0,
-    style: 'currency',
-    currency: 'CZK',
-  }).format(value);
+  const years = roads.map((road) => road.completionYear);
+  const min = Math.min(...years);
+  const max = Math.max(...years);
+
+  return min === max ? String(min) : `${min}-${max}`;
 }
 
-function formatShortCurrency(value: number) {
-  if (value <= 0) return 'neuvedeno';
+function yearColor(year: number, range: { min: number; max: number }) {
+  const span = Math.max(1, range.max - range.min);
+  const recency = (year - range.min) / span;
+  const oldColor = [120, 129, 126];
+  const newColor = [22, 163, 74];
+  const rgb = oldColor.map((oldChannel, index) =>
+    Math.round(oldChannel + ((newColor[index] ?? oldChannel) - oldChannel) * recency),
+  );
 
-  return `${new Intl.NumberFormat('cs-CZ', {
-    maximumFractionDigits: 1,
-  }).format(value / 1_000_000)} mil. Kč`;
+  return `rgb(${rgb.join(' ')})`;
 }

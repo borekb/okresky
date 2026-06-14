@@ -32,6 +32,16 @@ function classifyKind(title) {
   return 'other';
 }
 
+function isDrivingSegment(title, kind) {
+  const lower = title.toLocaleLowerCase('cs-CZ');
+
+  if (['bridge', 'connector', 'intersection', 'structure'].includes(kind)) return false;
+  if (lower.includes('zastávka') || lower.includes('bus záliv')) return false;
+  if (lower.includes('opěrná zeď') || lower.includes('propustek')) return false;
+
+  return true;
+}
+
 function classifyRoad(record) {
   const title = value(record, 'title');
   const road = value(record, 'road_class_or_number');
@@ -71,6 +81,7 @@ const roads = lines.map((line, index) => {
     .trim();
   const costExVat = parseMoney(value(record, 'cost_ex_vat'));
   const totalCost = parseMoney(value(record, 'total_cost'));
+  const kind = classifyKind(title);
 
   return {
     id: slug(title, index),
@@ -86,7 +97,8 @@ const roads = lines.map((line, index) => {
     locationQuality: isPlaceholderLocation(lat, lon) ? 'placeholder' : 'source',
     costExVat,
     totalCost,
-    kind: classifyKind(title),
+    kind,
+    drivingSegment: isDrivingSegment(title, kind),
     motorwayContext: /\bD35\b/.test(title),
     sourceDataset: value(record, 'source_dataset'),
     sourceUrl: value(record, 'source_url'),

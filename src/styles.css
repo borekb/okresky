@@ -166,20 +166,30 @@ h2 {
   padding-bottom: 2px;
 }
 
-.kind-tabs button {
+.legend-chip {
   flex: 0 0 auto;
-  min-height: 34px;
-  padding: 0 11px;
+  min-height: 32px;
+  padding: 7px 11px;
   border: 1px solid #d8d4ca;
   border-radius: 8px;
-  color: #3b4658;
+  color: #172033;
+  font-size: 0.84rem;
+  font-weight: 750;
   background: #fff;
 }
 
-.kind-tabs button.active {
-  border-color: #172033;
+.legend-chip.latest {
   color: #fff;
-  background: #172033;
+  background: #16a34a;
+}
+
+.legend-chip.mid {
+  background: #b8c4bd;
+}
+
+.legend-chip.old {
+  color: #fff;
+  background: #78817e;
 }
 
 .toggle-row {
@@ -193,7 +203,11 @@ h2 {
 .toggle-row input {
   width: 16px;
   height: 16px;
-  accent-color: #f04d23;
+  accent-color: #16a34a;
+}
+
+.muted-toggle {
+  color: #687080;
 }
 
 .stats {
@@ -294,31 +308,6 @@ h2 {
   text-align: center;
 }
 
-.kind-bridge,
-.kind-structure {
-  background: #7c3aed;
-}
-
-.kind-connector {
-  background: #0f766e;
-}
-
-.kind-intersection {
-  background: #d97706;
-}
-
-.kind-other {
-  background: #64748b;
-}
-
-.kind-reconstruction {
-  background: #2563eb;
-}
-
-.kind-repair {
-  background: #dc2626;
-}
-
 .map-region {
   position: relative;
   min-width: 0;
@@ -334,6 +323,7 @@ h2 {
 
 .detail-panel {
   position: absolute;
+  z-index: 650;
   right: 18px;
   bottom: 18px;
   left: 18px;
