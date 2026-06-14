@@ -3,6 +3,7 @@ import { CalendarDays, ExternalLink, Filter, MapPinned, RouteIcon, Search } from
 import { useMemo, useState } from 'react';
 
 import { RoadMap } from '@/components/RoadMap';
+import rawRoadGeometries from '@/data/road-geometries.json';
 import rawRoadData from '@/data/roads.json';
 
 export type RoadKind = 'bridge' | 'connector' | 'intersection' | 'other' | 'reconstruction' | 'repair' | 'structure';
@@ -41,7 +42,28 @@ interface RoadData {
   };
 }
 
+interface RoadGeometryData {
+  summary: {
+    candidates: number;
+    matched: number;
+    unmatched: number;
+  };
+  roads: Record<
+    string,
+    {
+      source: string;
+      quality: string;
+      osmRef: string;
+      wayIds: number[];
+      nearestDistanceMeters: number;
+      lengthMeters: number;
+      geometry: [number, number][][];
+    }
+  >;
+}
+
 const roadData = rawRoadData as RoadData;
+const roadGeometries = rawRoadGeometries as unknown as RoadGeometryData;
 
 const KIND_LABELS: Record<RoadKind, string> = {
   bridge: 'Mosty',
@@ -99,6 +121,7 @@ function HomePage() {
   }, [includeMotorwayContext, normalizedQuery, roadClass, showNonSegments, year]);
 
   const mappedRoads = filteredRoads.filter((road) => road.locationQuality === 'source');
+  const osmMatchedRoads = filteredRoads.filter((road) => roadGeometries.roads[road.id]);
   const selectedRoad = filteredRoads.find((road) => road.id === selectedRoadId) ?? filteredRoads[0] ?? null;
 
   return (
@@ -177,7 +200,7 @@ function HomePage() {
 
         <section className="stats" aria-label="Souhrn">
           <Metric icon={MapPinned} label="Úseky" value={filteredRoads.length.toLocaleString('cs-CZ')} />
-          <Metric icon={RouteIcon} label="V mapě" value={mappedRoads.length.toLocaleString('cs-CZ')} />
+          <Metric icon={RouteIcon} label="OSM" value={osmMatchedRoads.length.toLocaleString('cs-CZ')} />
           <Metric icon={CalendarDays} label="Roky" value={formatYearSpan(filteredRoads)} />
         </section>
 
@@ -207,6 +230,7 @@ function HomePage() {
       <section className="map-region">
         <RoadMap
           roads={mappedRoads}
+          roadGeometries={roadGeometries.roads}
           yearRange={yearRange}
           selectedRoadId={selectedRoad?.id ?? null}
           onSelectRoad={setSelectedRoadId}
@@ -222,7 +246,7 @@ function HomePage() {
               </p>
             </div>
             <div className="detail-actions">
-              <span>{selectedRoad.drivingSegment ? 'Silniční úsek' : KIND_LABELS[selectedRoad.kind]}</span>
+              <span>{roadGeometries.roads[selectedRoad.id] ? 'OSM úsek' : 'Odhad úseku'}</span>
               <a href={selectedRoad.sourceUrl} target="_blank" rel="noreferrer">
                 Zdroj <ExternalLink size={14} aria-hidden />
               </a>

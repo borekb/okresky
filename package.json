@@ -10,6 +10,7 @@
     "build": "pnpm data:roads && vite build",
     "preview": "vite preview",
     "data:roads": "node scripts/build-road-data.mjs",
+    "data:osm-geometries": "node scripts/fetch-osm-road-geometries.mjs",
     "ts:check": "tsc --noEmit",
     "check": "pnpm data:roads && pnpm ts:check && pnpm build"
   },

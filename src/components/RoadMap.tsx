@@ -8,13 +8,25 @@ type LayerGroup = import('leaflet').LayerGroup;
 
 const PARDUBICE: [number, number] = [50.0343, 15.7812];
 
+interface RoadGeometry {
+  source: string;
+  quality: string;
+  osmRef: string;
+  wayIds: number[];
+  nearestDistanceMeters: number;
+  lengthMeters: number;
+  geometry: [number, number][][];
+}
+
 export function RoadMap({
   roads,
+  roadGeometries,
   yearRange,
   selectedRoadId,
   onSelectRoad,
 }: {
   roads: Road[];
+  roadGeometries: Record<string, RoadGeometry>;
   yearRange: { min: number; max: number };
   selectedRoadId: string | null;
   onSelectRoad: (roadId: string) => void;
@@ -53,8 +65,8 @@ export function RoadMap({
 
       markerLayerRef.current = L.layerGroup().addTo(map);
       mapRef.current = map;
-      renderSegments(L, markerLayerRef.current, roads, yearRange, selectedRoadId, onSelectRoad);
-      fitRoads(L, map, roads);
+      renderSegments(L, markerLayerRef.current, roads, roadGeometries, yearRange, selectedRoadId, onSelectRoad);
+      fitRoads(L, map, roads, roadGeometries);
     }
 
     setupMap();
@@ -73,16 +85,16 @@ export function RoadMap({
     const map = mapRef.current;
     if (!L || !layer || !map) return;
 
-    renderSegments(L, layer, roads, yearRange, selectedRoadId, onSelectRoad);
-  }, [roads, yearRange, selectedRoadId, onSelectRoad]);
+    renderSegments(L, layer, roads, roadGeometries, yearRange, selectedRoadId, onSelectRoad);
+  }, [roads, roadGeometries, yearRange, selectedRoadId, onSelectRoad]);
 
   useEffect(() => {
     const L = leafletRef.current;
     const map = mapRef.current;
     if (!L || !map) return;
 
-    fitRoads(L, map, roads);
-  }, [roads]);
+    fitRoads(L, map, roads, roadGeometries);
+  }, [roads, roadGeometries]);
 
   return <div ref={containerRef} className="map-canvas" aria-label="Mapa rekonstruovaných silnic" />;
 }
@@ -91,6 +103,7 @@ function renderSegments(
   L: LeafletModule,
   layer: LayerGroup,
   roads: Road[],
+  roadGeometries: Record<string, RoadGeometry>,
   yearRange: { min: number; max: number },
   selectedRoadId: string | null,
   onSelectRoad: (roadId: string) => void,
@@ -100,23 +113,25 @@ function renderSegments(
   for (const road of roads) {
     const selected = road.id === selectedRoadId;
     const color = yearColor(road.completionYear, yearRange);
-    const path = segmentPath(road);
-    const outline = L.polyline(path, {
+    const roadGeometry = roadGeometries[road.id];
+    const paths = roadGeometry?.geometry ?? [estimatedSegmentPath(road)];
+    const outline = L.polyline(paths, {
       color: selected ? '#0f172a' : '#ffffff',
       opacity: selected ? 0.92 : 0.82,
       weight: selected ? 12 : 9,
       lineCap: 'round',
       lineJoin: 'round',
     });
-    const segment = L.polyline(path, {
+    const segment = L.polyline(paths, {
       color,
       opacity: selected ? 1 : 0.86,
       weight: selected ? 7 : 5,
       lineCap: 'round',
       lineJoin: 'round',
+      dashArray: roadGeometry ? undefined : '6 8',
     });
 
-    segment.bindPopup(popupHtml(road), {
+    segment.bindPopup(popupHtml(road, roadGeometry), {
       closeButton: false,
       className: 'road-popup',
       maxWidth: 320,
@@ -133,20 +148,21 @@ function renderSegments(
   }
 }
 
-function fitRoads(L: LeafletModule, map: LeafletMap, roads: Road[]) {
+function fitRoads(L: LeafletModule, map: LeafletMap, roads: Road[], roadGeometries: Record<string, RoadGeometry>) {
   if (roads.length === 0) {
     map.setView(PARDUBICE, 8);
     return;
   }
 
-  const bounds = L.latLngBounds(roads.map((road) => [road.lat, road.lon]));
+  const points = roads.flatMap((road) => roadBoundsPoints(road, roadGeometries[road.id]));
+  const bounds = L.latLngBounds(points);
   map.fitBounds(bounds.pad(0.18), {
     animate: false,
     maxZoom: roads.length === 1 ? 12 : 11,
   });
 }
 
-function popupHtml(road: Road) {
+function popupHtml(road: Road, geometry: RoadGeometry | undefined) {
   const dates = [road.realizationFrom, road.realizationTo].filter(Boolean).join(' - ');
 
   return `
@@ -154,6 +170,7 @@ function popupHtml(road: Road) {
       <strong>${escapeHtml(road.title)}</strong>
       <span>${escapeHtml(road.road)} · ${road.completionYear}</span>
       ${dates ? `<span>${escapeHtml(dates)}</span>` : ''}
+      <span>${geometry ? `OSM ref ${escapeHtml(geometry.osmRef)} · ${geometry.lengthMeters} m` : 'Odhad z APDOS bodu'}</span>
     </div>
   `;
 }
@@ -167,7 +184,13 @@ function escapeHtml(value: string) {
     .replaceAll("'", '&#039;');
 }
 
-function segmentPath(road: Road): [[number, number], [number, number]] {
+function roadBoundsPoints(road: Road, geometry: RoadGeometry | undefined) {
+  if (!geometry) return [[road.lat, road.lon] as [number, number]];
+
+  return geometry.geometry.flat();
+}
+
+function estimatedSegmentPath(road: Road): [[number, number], [number, number]] {
   const bearing = ((hashString(road.id) % 120) - 60) * (Math.PI / 180);
   const lengthKm = road.completionYear >= 2024 ? 2.2 : 1.7;
   const halfLat = (Math.cos(bearing) * lengthKm) / 111 / 2;
