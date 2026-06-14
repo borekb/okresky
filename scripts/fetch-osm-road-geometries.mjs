@@ -11,12 +11,15 @@ const nearbyWayDistanceMeters = 3000;
 const maxGeometryLengthMeters = 18000;
 
 const roadsData = JSON.parse(readFileSync(roadsPath, 'utf8'));
-const candidates = roadsData.roads
+const sourceLocatedDrivingSegments = roadsData.roads
   .filter((road) => road.drivingSegment && road.locationQuality === 'source')
   .map((road) => ({
     ...road,
     osmRef: extractRoadRef(road),
-  }))
+  }));
+const manualCandidates = sourceLocatedDrivingSegments.filter((road) => isGeometryOverride(road.geometryOverride));
+const candidates = sourceLocatedDrivingSegments
+  .filter((road) => !isGeometryOverride(road.geometryOverride))
   .filter((road) => road.osmRef);
 
 if (candidates.length === 0) {
@@ -50,6 +53,20 @@ writeFileSync(rawPath, `${JSON.stringify(overpassData, null, 2)}\n`);
 const waysByRef = indexWaysByRef(overpassData.elements ?? []);
 const geometries = {};
 const unmatched = [];
+
+for (const road of manualCandidates) {
+  const geometry = road.geometryOverride.map(([lat, lon]) => [roundCoord(lat), roundCoord(lon)]);
+
+  geometries[road.id] = {
+    source: 'manual-osm-geometry',
+    quality: 'manual_project_extent',
+    osmRef: road.osmRef,
+    wayIds: [],
+    nearestDistanceMeters: 0,
+    lengthMeters: Math.round(lineLengthMeters(geometry)),
+    geometry: [geometry],
+  };
+}
 
 for (const road of candidates) {
   const ways = waysByRef.get(road.osmRef) ?? [];
@@ -99,7 +116,7 @@ const output = {
     note: 'Matched by normalized OSM road ref and source point. This is more precise than synthetic display segments, but not yet manually verified project extents.',
   },
   summary: {
-    candidates: candidates.length,
+    candidates: candidates.length + manualCandidates.length,
     refs: refs.length,
     matched: Object.keys(geometries).length,
     unmatched: unmatched.length,
@@ -256,4 +273,18 @@ function roundCoord(value) {
 
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function isGeometryOverride(value) {
+  return (
+    Array.isArray(value) &&
+    value.length >= 2 &&
+    value.every(
+      (point) =>
+        Array.isArray(point) &&
+        point.length === 2 &&
+        Number.isFinite(point[0]) &&
+        Number.isFinite(point[1]),
+    )
+  );
 }

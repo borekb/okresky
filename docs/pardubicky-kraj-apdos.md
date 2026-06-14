@@ -62,6 +62,8 @@ Examples needing scope review:
 - Some candidate coordinates are placeholders (`50.0`, `14.7`).
 - `Komunikace` sometimes contains a road number and sometimes a generic value such as `Silnice III. třídy`.
 - `CenaBezDPH` and `CelkoveNaklady` mix formatted strings, plain numbers, blanks, and currency suffixes.
+- `Stav` can lag behind reality or contract execution. For III/33742 around Březinka / Nový Dvůr, APDOS still showed preparation-like rows, while the SUSPk E-ZAK contract page showed fulfillment ended on 2025-07-01 for the Hošťalovice / Březinka segment.
+- SUSPk E-ZAK is a necessary cross-check for Pardubicky rows that appear missing, stale, or current-but-not-closed in APDOS.
 
 ## Next steps
 

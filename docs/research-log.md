@@ -1,5 +1,26 @@
 # Research Log
 
+## 2026-06-15
+
+Audited a field-observed repaired section on III/33742 around Březinka / Nový Dvůr / letiště Podhořany after APDOS failed to represent the state plausibly.
+
+Key finding: APDOS is a useful Pardubicky machine-readable map export, but it is not sufficient as a state-of-work authority. SUSPk has its own E-ZAK profile at <https://ezak.suspk.cz/>, and its contract pages can show better completion evidence than APDOS.
+
+Archived targeted E-ZAK pages and small source PDFs/text under `resources/raw/suspk-ezak/2026-06-15/`.
+
+Added `resources/processed/suspk-ezak-additions-2026-06-15.json` and wired it into `scripts/build-road-data.mjs`.
+
+Rows added:
+
+- III/33742 Hošťalovice / Březinka - směr Nový Dvůr: E-ZAK DBID 1257 / `P24V00000156`, SWIETELSKY contract signed 2024-08-19, fulfillment ended 2025-07-01, actual paid price recorded in 2025. This explains the field-observed fresh surface and corrects APDOS' stale preparation-like state.
+
+Rows checked but skipped:
+
+- DBID 518, III/33750 Vyžice - křiž. III/33742: completed in 2015, outside scope.
+- DBID 519, III/33744 Licomělice - křiž. III/33742: completed in 2016, outside scope.
+- DBID 1077, III/33742 Třemošnice - Podhradí odvodnění: drainage-focused, not a driving-surface reconstruction segment.
+- DBID 1516, III/33742 Nový Dvůr - letiště Podhořany: current 2026 contract with planned May 2026 start and 45-day duration. Project documentation defines a 363.56 m section from the III/33742 x I/17 junction to the airport access road, but field observation says the remaining Nový Dvůr intravilán section is not finished. Keep as pending source material until official close-out or field verification.
+
 ## 2026-06-14
 
 Initial project research and structure setup.

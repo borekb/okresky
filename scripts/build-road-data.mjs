@@ -4,6 +4,7 @@ const inputPath = 'resources/processed/pardubicky-kraj-apdos-candidates.tsv';
 const regionalAdditionPaths = [
   'resources/processed/regional-road-additions.json',
   'resources/processed/regional-road-backfill-2026-06-14.json',
+  'resources/processed/suspk-ezak-additions-2026-06-15.json',
 ];
 const outputPath = 'src/data/roads.json';
 

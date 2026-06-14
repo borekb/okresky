@@ -1,6 +1,6 @@
 # Source Inventory
 
-Last updated: 2026-06-14
+Last updated: 2026-06-15
 
 ## Core scope
 
@@ -8,12 +8,18 @@ Catalog reconstructed or substantially repaired non-motorway roads around Pardub
 
 ## Pardubicky kraj
 
-Primary machine-readable source:
+Primary machine-readable map source:
 
 - Map page: <https://doprava.pardubickykraj.cz/>
 - Data endpoint discovered in the embedded app bundle: <https://apdos.roadmedia.cz/json/data-pardubice.json>
 - Archived raw file: `resources/raw/apdos/data-pardubice-2026-06-14.json`
 - Derived candidate table: `resources/processed/pardubicky-kraj-apdos-candidates.tsv`
+
+Important cross-check source:
+
+- SUSPk E-ZAK profile: <https://ezak.suspk.cz/>
+- Targeted archived pages: `resources/raw/suspk-ezak/2026-06-15/`
+- Processed additions: `resources/processed/suspk-ezak-additions-2026-06-15.json`
 
 The JSON has top-level keys `kraj`, `silnice`, `zeleznice`, and `oprava`. The useful candidate records are in `oprava`.
 
@@ -36,6 +42,19 @@ Notes:
 - The app labels the map as "Dopravni stavby Pardubickeho kraje" and says it is updated monthly.
 - The data includes many useful roads II/III, but also D35, RSD roads I. class, bridge work, intersections, and feeder roads. Keep rows as candidates until classified.
 - Rows where `Komunikace = D35` are excluded from the first candidate TSV; rows whose title mentions D35 but whose road is II/III are kept for review.
+- APDOS should not be treated as authoritative for current state. A field-observed III/33742 repair around Březinka / Nový Dvůr was missing from the app because APDOS rows were still `V přípravě`, while SUSPk E-ZAK showed one matching contract with fulfillment ended on 2025-07-01 and another 2026 contract in progress.
+- For suspicious Pardubicky gaps, search E-ZAK by road number and nearby place names. Useful fields in contract pages include DBID, system number, start date, tender deadline, contract date, selected supplier, actual paid price, and fulfillment close-out status.
+
+SUSPk E-ZAK rows added from the III/33742 audit:
+
+- `P24V00000156` / DBID 1257: Oprava silnice III/33742 Hošťalovice, úsek od křiž. s III/33744 směr Nový Dvůr. E-ZAK shows contract with SWIETELSKY, signed 2024-08-19, fulfillment ended 2025-07-01, paid amount in 2025. Added as a 2025 repaired driving segment.
+
+SUSPk E-ZAK rows deliberately not added:
+
+- DBID 518: III/33750 Vyžice - křiž. III/33742, fulfillment ended 2015-11-30, outside the current 2020+ window.
+- DBID 519: III/33744 Licomělice - křiž. III/33742, fulfillment ended 2016-06-30, outside the current 2020+ window.
+- DBID 1077: III/33742 Třemošnice - Podhradí odvodnění, drainage work rather than a reconstructed driving segment.
+- DBID 1516 / `P26V00000038`: III/33742 Nový Dvůr - letiště Podhořany, current 2026 contract with planned May 2026 start and 45-day duration. Project documentation says the section is 363.56 m from the III/33742 x I/17 junction to the airport access road. Field observation says the remaining Nový Dvůr intravilán section is not finished, so keep it as pending source material until official close-out or field verification.
 
 ## Kralovehradecky kraj
 

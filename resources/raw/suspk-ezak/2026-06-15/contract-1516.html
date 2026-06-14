@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="QCM, s.r.o." />
+    <title>Veřejné zakázky - E-ZAK SUSPK</title>
+
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/libs/jquery/dist/jquery.min.js?5.9.1.0"></script>
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/main.js?5.9.1.0"></script>
+    <script type="text/javascript">
+      mainStrings.ERR_DATA_LOAD_FAILED = 'Neplatná operace. Pokud se problém opakuje, prosíme, kontaktujte provozovatele systému s popisem postupu, při kterém k problému došlo. Děkujeme.';
+      mainStrings.PERMISSION_DENIED = 'Na tuto akci nemáte dostatečná oprávnění.';
+      mainStrings.ERR_PROLONG_SESSION_FAILED = 'Nepodařilo se prodloužit sezení, proveďte nějakou akci, jinak dojde k odhlášení!';
+      mainStrings.INFO_END_OF_SESSION = '!!! Blíží se konec Vašeho sezení !!!';
+      mainStrings.SELECT2_CLEAR = 'Smazat';
+      mainStrings.SELECT2_CHOOSE = 'Vyberte';
+      mainStrings.SELECT2_ALL_SELECT_TO_RESTRICT = 'Vše, pro omezení vyberte...';
+      mainStrings.SHOW_CALENDAR = 'zobrazit kalendář';
+      mainStrings.WAITING_SUBMIT_DEFAULT_TEXT = 'Probíhá přenos dat';
+      mainStrings.WAITING_LOAD_DEFAULT_TEXT = 'Probíhá načítání dat';
+      mainStrings.MAX_FILE_SIZE_EXCEEDED = 'Zvolený soubor překračuje maximální možnou velikost.';
+      mainStrings.MAX_DMS_FILE_SIZE_EXCEEDED = 'Zvolený soubor překračuje maximální možnou velikost, kterou je možné odeslat do spisové služby';
+      mainStrings.FILE_SIZE_IS_ZERO = 'Nelze připojit prázdný soubor. Prosím zkontrolujte obsah souboru a proveďte akci znovu s neprázdným souborem.';
+      mainStrings.FILE_EXTENSION_NOT_ALLOWED = 'Soubor má nepřípustný formát. Nahrát lze pouze soubory s příponou ';
+      mainStrings.DMS_FILE_VERSION_NOT_SENT = 'POZOR! Předchozí verze souboru nebyla odeslána do spisové služby.';
+      mainStrings.SEARCH_QUERY_TOO_LONG = 'Vyhledávací dotaz je příliš dlouhý, omezte prosím počet nebo délku vyhledávacích kritérií.';
+      mainStrings.DATE_INVALID_USE_CALENDAR = 'Neplatné datum, použijte kalendář.';
+      mainStrings.SANCTION_LIST_ERROR = 'Vyhodnocení rizik subjektu je možné pouze pro české společnosti s vyplněným platným IČO.';
+      mainStrings.TODAY = 'Dnes';
+      mainStrings.FILTER = 'Filtr';
+      mainStrings.FILTER_RESET = 'Reset filtrů';
+      mainStrings.FILTER_UPDATE = 'Filtrovat';
+      mainStrings.TOTAL_RECORDS_COUNT = 'Celkový počet záznamů';
+      mainStrings.FILTERED_RECORDS_COUNT = 'Filtrovaný počet záznamů';
+      mainStrings.CONFIRM = 'Použít';
+      mainStrings.COPY = 'zkopírovat';
+      mainStrings.YES = 'ano';
+      mainStrings.NO = 'ne';
+      mainStrings.COPIED_TO_CLIPBOARD = 'Zkopírováno do schránky';
+      actualLanguage = 'cs';
+      redirectBackRequestKey = 'redirectBack';
+      isJsValidationEnabled = !!'1';
+      REQUEST_URI_MAX_LENGTH = 2048;
+      MESSAGE_TYPE_WARNING = 'warning';
+      MESSAGE_TYPE_INFO = 'info';
+      MESSAGE_TYPE_SUCCESS = 'success';
+      MESSAGE_TYPE_ERROR = 'error';
+      MESSAGE_TYPE_RECOMMEND = 'recommend';
+      MESSAGE_TYPE_CONFIRM = 'confirm';
+    </script>
+    <script type="text/javascript" src='https://ezak.suspk.cz/js/libs/jquery-titlealert/jquery.titlealert.min.js?5.9.1.0'></script>
+    <script type="text/javascript" src='https://ezak.suspk.cz/js/init.js?5.9.1.0'></script>
+
+
+      <link href="https://ezak.suspk.cz/theme/images/favicon.ico" rel="SHORTCUT ICON" />
+
+      <link rel="stylesheet" href="https://ezak.suspk.cz/theme/styles/main.css?5.9.1.0" type="text/css" media="screen, projection" />
+
+          <link rel="stylesheet" href="https://ezak.suspk.cz/theme/styles/print.css?5.9.1.0" type="text/css" media="print" />
+    
+    <link rel="stylesheet" href="https://ezak.suspk.cz/js/libs/flatpickr/dist/flatpickr.css?5.9.1.0">
+    <script src="https://ezak.suspk.cz/js/libs/flatpickr/dist/flatpickr.js?5.9.1.0"></script>
+    <script src="https://ezak.suspk.cz/js/libs/flatpickr/dist/plugins/scrollPlugin.js?5.9.1.0"></script>
+    <link rel="stylesheet" href="https://ezak.suspk.cz/js/libs/shortcut-buttons-flatpickr/dist/themes/light.css?5.9.1.0">
+    <script src="https://ezak.suspk.cz/js/libs/shortcut-buttons-flatpickr/dist/shortcut-buttons-flatpickr.js?5.9.1.0"></script>
+          <script src="https://ezak.suspk.cz/js/libs/flatpickr/dist/l10n/cs.js?5.9.1.0"></script>
+    
+    
+    <link href='https://ezak.suspk.cz/js/libs/qtip2/dist/jquery.qtip.min.css?5.9.1.0' rel='stylesheet' />
+    <script type="text/javascript" src='https://ezak.suspk.cz/js/libs/qtip2/dist/jquery.qtip.min.js?5.9.1.0'></script>
+
+    <link href='https://ezak.suspk.cz/js/libs/select2/dist/css/select2.min.css?5.9.1.0' rel='stylesheet' />
+    <script type="text/javascript" src='https://ezak.suspk.cz/js/libs/select2/dist/js/select2.min.js?5.9.1.0'></script>
+    <script type="text/javascript" src='https://ezak.suspk.cz/js/libs/select2/dist/js/i18n/cs.js?5.9.1.0'></script>
+
+    
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/libs/parsleyjs/dist/parsley.min.js?5.9.1.0"></script>
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/libs/parsleyjs/dist/i18n/cs.js?5.9.1.0"></script>
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/parsleyExtras.js?5.9.1.0"></script>
+
+    
+    <link rel="stylesheet" href="https://ezak.suspk.cz/js/tablesorter/tablesorter.theme.notheme.css?5.9.1.0" type="text/css" media="screen, projection" />
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/libs/tablesorter/dist/js/jquery.tablesorter.min.js?5.9.1.0"></script>
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/libs/tablesorter/dist/js/widgets/widget-filter.min.js?5.9.1.0"></script>
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/libs/tablesorter/dist/js/widgets/widget-stickyHeaders.min.js?5.9.1.0"></script>
+    <script type="text/javascript" src="https://ezak.suspk.cz/js/tablesorter/jquery.alphanumericsort.js?5.9.1.0"></script>
+
+    <script type="text/javascript">
+                        initQTips();
+      initFlatpickrs('cs');
+      initParsley();
+      initAjaxSubmit();
+      initSelects2('cs');
+      initFormWaitings();
+      initFormRedirectBack('/contract_display_1516.html');
+      initAutofocusedInputs();
+      initBlockCopyButtons();
+      tablesorter.customizeOnLoad();
+      initResizableStickyTables();
+    
+        </script>
+
+        <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29465836-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+  </head>
+
+  <body id="dus">
+  <div id="page">
+    <div id="head">
+      <p class="hidden">
+        <a href="#cnt" title="Přejít na obsah [klávesová zkratka Alt+S]" accesskey="s">obsah</a> |
+        <a href="#foot" title="Přejít na zápatí">zápatí</a>
+      </p>
+
+      <a id="nav" title="Navigace"></a>
+      <div id="head-title">
+        <h1><a href="/" title="Správa a údržba silnic Pardubického kraje" tabindex="1"><span id="erb" >Správa a údržba silnic Pardubického kraje</span></a></h1>
+        <a href="https://www.ezak.cz" class="ezak_logo" title="E-ZAK verze 5"><span class="hidden">www.ezak.cz</span></a>
+      </div>
+
+      
+      <div class="slider">
+        <div class="slider-con"></div>
+      </div>
+
+    </div>
+
+    <div id="body">
+
+        <div id="menu-left">
+
+            <div id="pro-verejnost" class="hmenu">Pro veřejnost</div>
+  <ul class="menu">
+          <li >
+        <a href="agreement_index.html" title="přehled smluv"
+                  onclick="setWaiting(true);"
+                >Katalog smluv</a>
+      </li>
+      </ul>
+            <div id="zadavaci-rizeni" class="hmenu">Zadávací řízení</div>
+  <ul class="menu">
+          <li >
+        <a href="advice_index.html" title="přehled předběžných oznámení"
+                  onclick="setWaiting(true);"
+                >Předběžná oznámení</a>
+      </li>
+          <li class="active">
+        <a href="contract_index.html" title="přehled veřejných zakázek"
+                  onclick="setWaiting(true);"
+                >Veřejné zakázky</a>
+      </li>
+          <li >
+        <a href="contract_search.html" title="rozšířené vyhledávání"
+                >Vyhledávání</a>
+      </li>
+          <li >
+        <a href="dns_index.html" title="přehled dynamických nákupních systémů"
+                  onclick="setWaiting(true);"
+                >DNS</a>
+      </li>
+          <li >
+        <a href="document_public.html" title="veřejné dokumenty"
+                >Veřejné dokumenty</a>
+      </li>
+      </ul>
+                                                  
+  <div id="prihlaseni" class="hmenu">Přihlášení</div>
+  <div class="form">
+    <a class="nowrap" onclick="return modalWindowSmallProcessDataAndShow('auth_logindialog.html?redirect=%2Fcontract_display_1516.html');" id="login-submit">Přihlásit se</a>
+  </div>
+  <div class="cleaner"></div>
+
+            <div id="registrace" class="hmenu">Registrace</div>
+  <ul class="menu-1">
+    <li >
+      <a title="test nastavení prohlížeče" href="test_index.html">Test nastavení prohlížeče</a>
+    </li>
+    <li >
+      <a title="zapomenuté heslo" href="registrace_forgotpasswd.html">Zapomenuté heslo</a>
+    </li>
+    <li >
+      <a title="registrace dodavatele" href="registrace.html">Registrovat dodavatele</a>
+    </li>
+  </ul>
+              
+    
+    
+    
+  </div>
+
+  <script type="text/javascript">
+
+    var menuFunctions = {
+      setUnreadMessagesCounts: function () {
+        $.ajax({
+          type: "POST",
+          url: "message_unreadCounts.html",
+          dataType: "json",
+          async: true,
+          success: function (response) {
+            menuFunctions.setUnreadMessagesData(response);
+          },
+          error: function () {
+            menuFunctions.setUnreadMessagesData({});
+          }
+        });
+      },
+      setUnreadMessagesData: function (data) {
+        var messagesCountElem = $("#messagesIncomingCount");
+        var cMessagesCountElem = $("#cmessagesIncomingCount");
+        if (jQuery.isEmptyObject(data) || typeof data.messages == "undefined" || data.messages == 0) {
+          messagesCountElem.html(null);
+        } else {
+          messagesCountElem.html("(" + data.messages + ")");
+        }
+        if (jQuery.isEmptyObject(data) || typeof data.cmessages == "undefined" || data.cmessages == 0) {
+          cMessagesCountElem.html(null);
+        } else {
+          cMessagesCountElem.html("(" + data.cmessages + ")");
+        }
+      }
+    };
+
+    
+  </script>
+
+      <p class="hidden">
+        <a href="#nav" title="Přejít na navigaci">navigace</a> |
+        <a href="#foot" title="Přejít na zápatí">zápatí</a>
+      </p>
+
+      <a id="cnt" title="Obsah"></a>
+      <div id="content-first">
+
+                  <div class="breadcrumb">
+            <a href="/">hlavní stránka</a> &#187;
+                                                            <a href="contract_index.html">veřejné zakázky</a> &#187;
+                                                                                          <a href="contract_display_1516.html">Oprava silnice III/33742 Nový Dvůr – letiště Podhořany</a> &#187;
+                                                                        <i>detail veřejné zakázky</i>
+                                    </div>
+        
+        
+        
+                                
+        
+        
+        
+        <div class="modalWindow noprint" id="modalWindow_logout_alert">
+  <div class="page_shade"></div>
+  <div class="dialog">
+    <div class="dialog_window" id="dialog_window_logout_alert">
+      <div class="dialog_handle">
+        <div class="dialog_title" id="div_title_logout_alert">Bezpečnostní upozornění</div>
+        <div class="dialog_close" title="Zavřít" onclick="modalWindows.hide('modalWindow_logout_alert');">x</div>
+      </div>
+      <div class="dialog_body" id="div_head_logout_alert">
+        <h4 class="center">Blíží se konec Vašeho sezení. Pokud neprovedete v následující minutě žádnou akci, budete automaticky odhlášen(a).</h4><br /><br />
+        <input type="submit" class="submit" name="prolong" title="prodloužit sezení" value="prodloužit sezení" onclick="prolongSession('24ddeb89043549f33d8299c245fcc174');"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <div class="modalWindow noprint" id="modalWindowAlertOrConfirm">
+  <div class="page_shade"></div>
+  <div class="dialog">
+    <div class="dialog_window">
+      <div class="dialog_handle">
+        <div class="dialog_title" id="modalWindowAlertOrConfirm_title"></div>
+        <div class="dialog_close" qtip qtip-text="Zavřít (Esc)" onclick="return modalWindows.alertOrConfirmHide();">x</div>
+      </div>
+      <div class="dialog_body" id="modalWindowAlertOrConfirm_head" onchange="modalWindows.alertOrConfirmResizeByContent();"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+  alertModalProcess = function (message, type, customTitle) {
+    var modalContent = $('  <div>\n    <div class=\"modalAlertOrConfirmTitle\"><\/div>\n    <fieldset>\n      <div id=\"modalAlertContent\"><\/div>\n      <div class=\"cleaner\"><\/div>\n      <div class=\"center\">\n        <a onclick=\"return modalWindows.alertOrConfirmHide();\" class=\"button-create\">OK<\/a>\n      <\/div>\n    <\/fieldset>\n  <\/div>\n');
+    switch (type) {
+      case MESSAGE_TYPE_INFO:
+        modalContent.find('fieldset').addClass('info_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Info');
+        break;
+      case MESSAGE_TYPE_ERROR:
+        modalContent.find('fieldset').addClass('err_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Chyba');
+        break;
+      case MESSAGE_TYPE_SUCCESS:
+        modalContent.find('fieldset').addClass('succ_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Info');
+        break;
+      case MESSAGE_TYPE_RECOMMEND:
+        modalContent.find('fieldset').addClass('recommend_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Doporučení');
+        break;
+      default:
+        modalContent.find('fieldset').addClass('warn_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Upozornění');
+        break;
+    }
+    if (message.indexOf('modalAlertOrConfirmTitle') >= 0) { // obsahuje html s class pro title
+      var titleElement = $(message).find('.modalAlertOrConfirmTitle').first();
+      modalContent.find('.modalAlertOrConfirmTitle').text(titleElement.html());
+    }
+    if (typeof customTitle != 'undefined' && customTitle != null) {
+      modalContent.find('.modalAlertOrConfirmTitle').text(customTitle);
+    }
+    modalContent.find("#modalAlertContent").html(message);
+    modalWindows.alertOrConfirmSetContent(modalContent);
+    return modalWindows.alertOrConfirmShow('modalWindow_smallest');
+  }
+
+  confirmModalProcess = function (message, confirmUrlRedirectOrCallbackFnc, customTitle, confirmButtonName, cancelButtonName, type) {
+    var modalContent = $('  <div>\n    <div class=\"modalAlertOrConfirmTitle\"><\/div>\n    <fieldset>\n      <div id=\"modalConfirmContent\"><\/div>\n      <div class=\"cleaner\"><\/div>\n      <div>\n        <a href=\"\" id=\"modalConfirmButton\" onclick=\"setWaiting(true); modalWindows.alertOrConfirmHide();\" class=\"button-create\">OK<\/a>\n        <a id=\"modalCancelButton\" onclick=\"return modalWindows.alertOrConfirmHide();\" class=\"button-create\">zpět<\/a>\n      <\/div>\n    <\/fieldset>\n  <\/div>\n');
+    switch (type) {
+      case MESSAGE_TYPE_WARNING:
+        modalContent.find('fieldset').addClass('warn_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Upozornění');
+        break;
+      case MESSAGE_TYPE_ERROR:
+        modalContent.find('fieldset').addClass('err_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Chyba');
+        break;
+      case MESSAGE_TYPE_SUCCESS:
+        modalContent.find('fieldset').addClass('succ_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Info');
+        break;
+      case MESSAGE_TYPE_RECOMMEND:
+        modalContent.find('fieldset').addClass('recommend_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Doporučení');
+        break;
+      case MESSAGE_TYPE_INFO:
+        modalContent.find('fieldset').addClass('info_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Info');
+        break;
+      case MESSAGE_TYPE_CONFIRM:
+      default:
+        modalContent.find('fieldset').addClass('confirm_msg');
+        modalContent.find('.modalAlertOrConfirmTitle').html('Potvrzení');
+        break;
+    }
+
+    if (typeof confirmUrlRedirectOrCallbackFnc == 'function') {
+        modalContent.find('#modalConfirmButton').on('click', function () {
+        confirmUrlRedirectOrCallbackFnc();
+        return false;
+      });
+    } else {
+      modalContent.find('#modalConfirmButton').prop('href', confirmUrlRedirectOrCallbackFnc);
+    }
+    if (typeof confirmButtonName != 'undefined' && confirmButtonName != null) {
+      modalContent.find('#modalConfirmButton').text(confirmButtonName);
+    }
+    if (typeof cancelButtonName != 'undefined' && cancelButtonName != null) {
+      modalContent.find('#modalCancelButton').text(cancelButtonName);
+    }
+    if (message.indexOf('modalAlertOrConfirmTitle') >= 0) { // obsahuje html s class title
+      var titleElement = $(message).find('.modalAlertOrConfirmTitle').first();
+      modalContent.find('.modalAlertOrConfirmTitle').text(titleElement.html());
+    }
+    if (typeof customTitle != 'undefined' && customTitle != null) {
+      modalContent.find('.modalAlertOrConfirmTitle').text(customTitle);
+    }
+    modalContent.find("#modalConfirmContent").html(message);
+    modalWindows.alertOrConfirmSetContent(modalContent);
+    return modalWindows.alertOrConfirmShow('modalWindow_small');
+  }
+</script>
+
+        <div class="modalWindow noprint" id="modalWindow">
+  <div class="page_shade"></div>
+  <div class="dialog">
+    <div class="dialog_window">
+      <div class="dialog_handle">
+        <div class="dialog_title" id="modalWindow_title"></div>
+        <div class="dialog_close" id="dialog_close_button" qtip qtip-text="Zavřít (Esc)" onclick="return modalWindowHide();">x</div>
+      </div>
+      <div class="dialog_body" id="modalWindow_head" onchange="modalWindows.resizeByContent();"></div>
+    </div>
+  </div>
+</div>
+<div class="modalWindow noprint" id="modalWindowFloating">
+  <div class="dialog_window">
+    <div class="dialog_handle">
+      <div class="dialog_title" id="modalWindowFloating_title"></div>
+      <div class="dialog_close" id="dialog_close_button" qtip qtip-text="Zavřít" onclick="return modalWindows.floatingHide();">x</div>
+    </div>
+    <div class="dialog_body" id="modalWindowFloating_head" onchange="modalWindows.floatingResizeByContent();"></div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  floatingModalProcess = function (message, type, allowClose, customTitle) {
+    var modalContent = $('  <div>\n    <div class=\"floatingTitle\"><\/div>\n    <fieldset>\n      <div id=\"floatingContent\"><\/div>\n      <div class=\"cleaner\"><\/div>\n    <\/fieldset>\n  <\/div>\n');
+    switch (type) {
+      case MESSAGE_TYPE_INFO:
+        modalContent.find('fieldset').addClass('info_msg');
+        modalContent.find('.floatingTitle').html('Info');
+        break;
+      case MESSAGE_TYPE_ERROR:
+        modalContent.find('fieldset').addClass('err_msg');
+        modalContent.find('.floatingTitle').html('Chyba');
+        break;
+      case MESSAGE_TYPE_SUCCESS:
+        modalContent.find('fieldset').addClass('succ_msg');
+        modalContent.find('.floatingTitle').html('Info');
+        break;
+      case MESSAGE_TYPE_RECOMMEND:
+        modalContent.find('fieldset').addClass('recommend_msg');
+        modalContent.find('.floatingTitle').html('Doporučení');
+        break;
+      default:
+        modalContent.find('fieldset').addClass('warn_msg');
+        modalContent.find('.floatingTitle').html('Upozornění');
+        break;
+    }
+    if (message.indexOf('floatingTitle') >= 0) { // obsahuje html s class pro title
+      var titleElement = $(message).find('.floatingTitle').first();
+      modalContent.find('.floatingTitle').text(titleElement.html());
+    }
+    if (typeof customTitle != 'undefined' && customTitle != null) {
+      modalContent.find('.floatingTitle').text(customTitle);
+    }
+    modalContent.find("#floatingContent").html(message);
+    modalWindows.floatingSetContent(modalContent);
+    return modalWindows.floatingShow(allowClose);
+  }
+</script>
+
+
+
+        <div id="centerBlock"><div class="contract">
+
+
+
+
+
+
+  
+  <h2 class="left">
+                        Veřejná zakázka:
+      
+      Oprava silnice III/33742 Nový Dvůr – letiště Podhořany
+      </h2>
+
+      
+    
+
+  
+    <h3 class="block cleaner " id="head_info">
+    <a id="a_info"
+       class="revealed"
+       href="?close=info"
+       onclick="handleBlock('info'); return false;">
+      Informace o veřejné zakázce
+    </a>
+  </h3>
+  <div class="block"
+       id="body_info"
+       style="display: block">
+
+          
+  
+      <fieldset id="contract-status">
+  <legend>
+          fáze zadávacího řízení
+      </legend>
+  <b>
+    Zadáno
+              </b>
+  <br />
+  Zakázka byla zadána.<br />
+
+        </fieldset>
+DBID: <b>1516</b><br />
+Systémové číslo: <b>P26V00000038</b><br />Evidenční číslo zadavatele: <b>SUSPK/2048/2026</b><br />
+
+
+      Datum zahájení:
+    <b>
+      27.02.2026
+    </b><br />
+      Nabídku podat do:
+    <b>12.03.2026 08:00</b>
+    <br />
+
+<br />
+<div class="cleaner"></div>
+
+  <div class="half">
+  <h4>
+          Název, druh veřejné zakázky a popis předmětu
+      </h4>
+  <ul>
+    <li>Název: <b>Oprava silnice III/33742 Nový Dvůr – letiště Podhořany </b> </li>
+          <li>Druh veřejné zakázky: <b>Stavební práce</b></li>
+              </ul>
+
+      <p>Stručný popis předmětu:<br />Předmětem plnění v rámci tohoto poptávkového řízení je zhotovení díla „Oprava silnice III/33742 Nový Dvůr – letiště Podhořany“.</p>
+  
+  <h4>
+        Postup zadání, předpokládaná hodnota
+  </h4>
+<ul>
+  <li>
+          Postup:
+        <b>
+              VZMR uzavřená výzva
+                  </b>
+
+      </li>
+      <li>
+              Režim veřejné zakázky:
+            <b>
+        VZ malého rozsahu
+              </b>
+    </li>
+        <li>Předpokládaná hodnota:
+      <b>
+                  3 907 445 Kč bez DPH
+              </b>
+        </li>
+    </ul>
+    <h4>Místo plnění</h4>
+  <ul>
+                  <li>Pardubický kraj</li>
+            </ul>
+</div>
+
+<div class="half">
+  <h4>Zadavatel</h4>
+  <ul>
+    <li>Úřední název: <b>Správa a údržba silnic Pardubického kraje</b></li>
+    <li>IČO: <b>00085031</b></li>
+    <li>Poštovní adresa:<br /><b>Doubravice 98<br />
+533 53 Pardubice</b></li>
+          <li>
+                  Název oddělení:
+          <b>Oddělení VZ</b>
+              </li>
+            <li>Id profilu zadavatele ve VVZ: <b>60051913</b></li>
+      </ul>
+
+  <h4>Adresa kontaktního místa</h4>
+      <p>
+              Nabídky, resp. žádosti o účast podávat na:
+            <br />
+      prostřednictvím elektronického nástroje E-ZAK (https://ezak.suspk.cz)
+    </p>
+        <h4>Elektronická komunikace</h4>
+    <p>
+      V rámci této zakázky je možné komunikovat elektronicky prostřednictvím eKomunikace Portálu dodavatele
+    </p>
+        <h4>Kontakt</h4>
+    <p id="infoBlockContact"></p>
+    <script type="text/javascript">
+      $("#infoBlockContact").html(Rot13.convert('"720834134"').slice(1, -1).replace(/(?:\r\n|\r|\n)/g, '<br>'));
+    </script>
+  </div>
+    <div class="cleaner"></div>
+
+
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_subject_items">
+    <a id="a_subject_items"
+       class=""
+       href="?open=subject_items"
+       onclick="handleBlock('subject_items'); return false;">
+      Položky předmětu (CPV)
+    </a>
+  </h3>
+  <div class="block"
+       id="body_subject_items"
+       style="display: none">
+
+          
+
+<div class="cleaner"></div>
+
+<div class="list">
+      <table>
+      <thead>
+        <tr>
+          <th>Název</th>
+          <th class="width_100">CPV kód</th>
+          <th class="width_100">Doplňkové kódy</th>
+                            </tr>
+      </thead>
+      <tbody>
+                  <tr class="o">
+            <td>Práce na opravě silnic</td>
+            <td>45233142-6</td>
+            <td >
+              <div qtip qtip-text=""></div>
+            </td>
+                      </tr>
+              </tbody>
+    </table>
+  </div>
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_doc_zad">
+    <a id="a_doc_zad"
+       class=""
+       href="?open=doc_zad"
+       onclick="handleBlock('doc_zad'); return false;">
+      Zadávací dokumentace
+    </a>
+  </h3>
+  <div class="block"
+       id="body_doc_zad"
+       style="display: none">
+
+          
+<div class="cleaner"></div>
+
+
+
+<div class="cleaner"></div>
+
+<p>Kvalifikační dokumentace není poskytována (resp. je součástí zadávací dokumentace).</p>
+
+
+
+  
+
+
+<p>Zadávací dokumentace je poskytována elektronicky bez omezení.</p>
+
+
+  <h4 class="cleaner">Zadávací dokumentace - soubory ke stažení</h4>
+  <div class="list">
+  <table>
+                            
+        
+                  <tr>
+                    <th class="width_20p">Název</th>
+          <th>Popis</th>
+          <th class="width_20p">Jméno souboru</th>
+          <th class="width_10p">Velikost</th>
+                        </tr>
+      
+      
+      <tr class="o">
+                <td>
+          <a href="document_download_22576.html"
+             title="detail dokumentu - Přílohy Výzvy">Přílohy Výzvy</a>
+        </td>
+        <td>
+          Přílohy Výzvy
+        </td>
+        <td>
+                                    <img src="https://ezak.suspk.cz/theme/images/icons/mime/archive.png"
+                   alt="Archiv ZIP" title="Archiv ZIP"
+              />&nbsp;<a href="document_22576/ab6c53f3a7212a9001326b7b82f728e4-prilohy-vyzvy-zip"
+                         title="stáhnout dokument - přílohy Výzvy.zip">přílohy Výzvy.zip
+              </a>
+            
+                              </td>
+        <td class="nowrap">
+          36,03 MiB
+        </td>
+                      </tr>
+          
+      
+      <tr class="e">
+                <td>
+          <a href="document_download_22578.html"
+             title="detail dokumentu - Výzva k podání cenové nabídky">Výzva k podání cenové nabídky</a>
+        </td>
+        <td>
+          Výzva k podání cenové nabídky
+        </td>
+        <td>
+                                    <img src="https://ezak.suspk.cz/theme/images/icons/mime/acrobat.png"
+                   alt="Dokument PDF" title="Dokument PDF"
+              />&nbsp;<a href="document_22578/564110600ec877411e0ef3ca3ac96ba6-vyzva-k-podani-cenove-nabidky-pdf"
+                         title="stáhnout dokument - Výzva k podání cenové nabídky.pdf">Výzva k podání cenové
+nabídky.pdf
+              </a>
+            
+                              </td>
+        <td class="nowrap">
+          225,64 KiB
+        </td>
+                      </tr>
+      </table>
+</div>
+
+
+
+
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_dd">
+    <a id="a_dd"
+       class=""
+       href="?open=dd"
+       onclick="handleBlock('dd'); return false;">
+      Vysvětlení, doplnění, změny zadávací dokumentace
+    </a>
+  </h3>
+  <div class="block"
+       id="body_dd"
+       style="display: none">
+
+          
+
+<div class="cleaner"></div>
+
+  <p>
+    Žádné vysvětlení, doplnění či změny zadávací dokumentace k zobrazení. Zkontrolujte též blok Zadávací dokumentace.
+  </p>
+
+
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_doc_pub">
+    <a id="a_doc_pub"
+       class=""
+       href="?open=doc_pub"
+       onclick="handleBlock('doc_pub'); return false;">
+      Veřejné dokumenty
+    </a>
+  </h3>
+  <div class="block"
+       id="body_doc_pub"
+       style="display: none">
+
+          
+<div class="cleaner"></div>
+
+
+
+<div class="cleaner">&nbsp;</div>
+
+  <h4>Přehled veřejných dokumentů</h4>
+  <div class="list">
+  <table>
+                  
+        
+                  <tr>
+                    <th class="width_20p">Název</th>
+          <th>Popis</th>
+          <th class="width_20p">Jméno souboru</th>
+          <th class="width_10p">Velikost</th>
+                        </tr>
+      
+      
+      <tr class="o">
+                <td>
+          <a href="document_download_22885.html"
+             title="detail dokumentu - Smlouva o dílo">Smlouva o dílo</a>
+        </td>
+        <td>
+          Smlouva o dílo
+        </td>
+        <td>
+                      <a href="https://smlouvy.gov.cz/smlouva/37367609">[8]37367609</a>
+                  </td>
+        <td class="nowrap">
+          neznáma
+        </td>
+                      </tr>
+      </table>
+</div>
+
+
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_forms">
+    <a id="a_forms"
+       class=""
+       href="?open=forms"
+       onclick="handleBlock('forms'); return false;">
+      Formuláře
+    </a>
+  </h3>
+  <div class="block"
+       id="body_forms"
+       style="display: none">
+
+          <div class="list">
+  <table class="width_full">
+    <tr>
+            <th>Název formuláře</th>
+      <th>Typ</th>
+      <th>Stav</th>
+              <th>Uveřejněno v E-ZAK</th>
+            <th>Uveřejněno ve VVZ</th>
+          </tr>
+          <tr class="o">
+                <td title="Interní formulář o zadání zakázky">
+          <a href="https://ezak.suspk.cz/form_display_2592.html" title="zobrazit detail">
+            Interní formulář o zadání zakázky</a>
+        </td>
+        <td title="Interní formulář o zadání zakázky">E03</td>
+        <td>
+          uveřejněný
+                  </td>
+
+                  <td>31.03.2026</td>
+        
+        <td>
+                      ---
+                  </td>
+
+              </tr>
+      </table>
+  
+  
+
+<input type="hidden" id="pagerCurrentPage" value="" />
+
+<script type="text/javascript">
+
+  /**
+   * Vrátí aktuální pozici pageru i ve chvíli kliknutí na něj
+   * @returns {int}
+   */
+  function getPagerPage() {
+    return pager.getCurrentPage();
+  }
+
+  $(function () {
+    if ($('.pager').find('.big').length === 1) { // nastaveni hodnoty dle aktivni stranky
+      $("#pagerCurrentPage").val($('.pager').find('.big').html());
+    }
+    $('.pager a').on('click', function () { // kliknuti na pager, pretizeni pokud je nastaveno
+      $("#pagerCurrentPage").val(pager.getPageFromUrl(this));
+            return true;
+    });
+  });
+
+  var pager = {
+
+  /**
+   * @returns {int}
+   */
+    getCurrentPage: function() {
+      return $("#pagerCurrentPage").val();
+    },
+
+    /**
+     * @param {Object} aElement
+     * @returns {Number|parse.params.page}
+     */
+    getPageFromUrl: function(aElement) {
+      var parse = parseURL($(aElement).attr('href'));
+      var page = parse.params.page;
+      if (!isNaN(page)) {
+        return page;
+      }
+      return 1;
+    }
+  };
+
+</script>
+</div>
+
+<script type="text/javascript">
+
+  var formTable = {
+    confirmDelete: function (message, confirmUrl) {
+      return confirmModal(message, confirmUrl, 'Potvrzení smazání formuláře', 'smazat');
+    },
+    confirmStorno: function (message, confirmUrl) {
+      return confirmModal(message, confirmUrl, 'Storno formuláře', 'stornovat formulář');
+    },
+    confirmPublish: function (message, confirmUrl) {
+      return confirmModal(message, confirmUrl, 'Publikování formuláře', 'publikovat');
+    }
+  };
+
+</script>
+
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_urls">
+    <a id="a_urls"
+       class=""
+       href="?open=urls"
+       onclick="handleBlock('urls'); return false;">
+      URL odkazy
+    </a>
+  </h3>
+  <div class="block"
+       id="body_urls"
+       style="display: none">
+
+          <div class="list cleaner">
+      <table class="width_full">
+            <tr>
+        <th>Název URL odkazu</th>
+        <th>URL adresa</th>
+              </tr>
+              <tr class="o">
+          <td>URL této VZ v E-ZAK</td>
+          <td><a href="https://ezak.suspk.cz/vz00001516">https://ezak.suspk.cz/vz00001516</a></td>
+                  </tr>
+          </table>
+    
+  
+
+<input type="hidden" id="pagerCurrentPage" value="" />
+
+<script type="text/javascript">
+
+  /**
+   * Vrátí aktuální pozici pageru i ve chvíli kliknutí na něj
+   * @returns {int}
+   */
+  function getPagerPage() {
+    return pager.getCurrentPage();
+  }
+
+  $(function () {
+    if ($('.pager').find('.big').length === 1) { // nastaveni hodnoty dle aktivni stranky
+      $("#pagerCurrentPage").val($('.pager').find('.big').html());
+    }
+    $('.pager a').on('click', function () { // kliknuti na pager, pretizeni pokud je nastaveno
+      $("#pagerCurrentPage").val(pager.getPageFromUrl(this));
+            return true;
+    });
+  });
+
+  var pager = {
+
+  /**
+   * @returns {int}
+   */
+    getCurrentPage: function() {
+      return $("#pagerCurrentPage").val();
+    },
+
+    /**
+     * @param {Object} aElement
+     * @returns {Number|parse.params.page}
+     */
+    getPageFromUrl: function(aElement) {
+      var parse = parseURL($(aElement).attr('href'));
+      var page = parse.params.page;
+      if (!isNaN(page)) {
+        return page;
+      }
+      return 1;
+    }
+  };
+
+</script>
+  </div>
+
+    
+  </div>
+  <h3 class="block cleaner " id="head_performance">
+    <a id="a_performance"
+       class=""
+       href="?open=performance"
+       onclick="handleBlock('performance'); return false;">
+      Plnění smlouvy na základě veřejné zakázky
+    </a>
+  </h3>
+  <div class="block"
+       id="body_performance"
+       style="display: none">
+
+          
+
+<div class="cleaner"></div>
+
+  <h4>Seznam účastníků</h4>
+      <div class="list">
+    <table>
+            <tr>
+                  <th>Název</th>
+          <th>IČO</th>
+          <th>Země sídla/podnikání/bydliště</th>
+                                          <th>Vyloučen</th>
+                      </tr>
+              <tr class="o">
+                      <td>
+                            Chládek a Tintěra, Pardubice a.s.
+                                        </td>
+            <td>
+              25253361
+            </td>
+            <td>
+              Česká republika
+            </td>
+          
+                                          <td>
+                              Ne
+                          </td>
+                            </tr>
+              <tr class="e">
+                      <td>
+                            HOLD, s.r.o.
+                                        </td>
+            <td>
+              45538425
+            </td>
+            <td>
+              Česká republika
+            </td>
+          
+                                          <td>
+                              Ne
+                          </td>
+                            </tr>
+              <tr class="o">
+                      <td>
+                            MIROS Pardubice a.s.
+                                        </td>
+            <td>
+              27523934
+            </td>
+            <td>
+              Česká republika
+            </td>
+          
+                                          <td>
+                              Ne
+                          </td>
+                            </tr>
+              <tr class="e">
+                      <td>
+                            M - SILNICE a.s.
+                                        </td>
+            <td>
+              42196868
+            </td>
+            <td>
+              Česká republika
+            </td>
+          
+                                          <td>
+                              Ne
+                          </td>
+                            </tr>
+              <tr class="o">
+                      <td>
+                            SWIETELSKY stavební s.r.o.
+                                        </td>
+            <td>
+              48035599
+            </td>
+            <td>
+              Česká republika
+            </td>
+          
+                                          <td>
+                              Ne
+                          </td>
+                            </tr>
+          </table>
+    </div>
+  
+  
+
+<div class="cleaner"></div>
+
+<h4>Vybraný dodavatel</h4>
+  <br />
+  <p>
+    Datum uzavření smlouvy: <b>30.03.2026</b>
+  </p>
+                      <div class="list">
+    <table>
+    <tr>
+      <th>Název</th>
+      <th>IČO</th>
+      <th>Země sídla/podnikání/bydliště</th>
+              <th>Smluvní cena<br />v Kč bez DPH</th>
+                    <th>Smluvní cena<br />v Kč vč. DPH</th>
+                    <th class="width_60">Datum smlouvy</th>
+                </tr>
+          <tr class="o">
+        <td>
+                    SWIETELSKY stavební s.r.o.
+                            </td>
+        <td>48035599</td>
+        <td>Česká republika</td>
+                  <td class="right">
+                          3&nbsp;650&nbsp;826,55
+                      </td>
+                          <td class="right">
+                          4&nbsp;417&nbsp;500,13
+                      </td>
+                          <td class="nowrap">
+                          30.03.2026
+                      </td>
+                      </tr>
+      </table>
+
+          </div>
+
+
+<br />
+  
+
+<div class="cleaner"></div>
+
+    
+  <h4>Skutečně uhrazená cena</h4>
+  Stav: <b>Probíhá plnění smlouvy</b>
+          <br />
+    Žádný záznam.
+  
+
+    
+  </div>
+
+<script type="text/javascript">
+
+  var handleBlock = function (name) {
+    var requestUrl = 'index.php?' + 'm=contract&a=display&id=1516';
+
+    var action = '';
+    if ($('#body_' + name).css('display') === 'none') {
+      $('#body_' + name).show();
+      action = 'open';
+    } else {
+      $('#body_' + name).hide();
+      action = 'close';
+    }
+
+    requestUrl = requestUrl + '&blocks=1&' + action + '=' + name;
+
+    if ($('#body_' + name).hasClass('load-data')) {
+      requestUrl = requestUrl + '&loadBlockData=' + name;
+
+      var isError = false;
+
+      $.ajax({
+        type: 'get',
+        url: requestUrl,
+        success: function (response) {
+          try {
+            var jsonResponse = JSON.parse(response);
+            $('#body_' + name).html(jsonResponse.content);
+
+                                    initSelects2('cs');
+            initFormWaitings();
+            initFormRedirectBack('/contract_display_1516.html');
+            initQTips();
+            initAutofocusedInputs();
+            tablesorter.customizeOnLoad();
+            initResizableStickyTables();
+          } catch (e) {
+            isError = true;
+          }
+        },
+        complete: function () {
+          if (isError) {
+            $('#body_' + name).html('Nemáte oprávnění pro zobrazení těchto údajů nebo nelze navázat spojení se serverem.');
+          } else {
+            $('#body_' + name).removeClass('load-data');
+          }
+        },
+        error: function () {
+          $('#body_' + name).html('Nemáte oprávnění pro zobrazení těchto údajů nebo nelze navázat spojení se serverem.');
+        }
+      });
+    } else {
+      $.ajax({
+        type: 'get',
+        url: requestUrl,
+        success: function () {
+          tablesorter.customizeOnLoad();
+          initResizableStickyTables();
+        }
+      });
+    }
+
+    if ($('#body_' + name).css('display') === 'none') {
+      $('#a_' + name).removeClass('revealed');
+    } else {
+      $('#a_' + name).addClass('revealed');
+    }
+  }
+
+</script>
+
+</div>
+
+</div>
+        <div id="winConfirmBg" style="display: none;">&nbsp;</div>
+        <div id="winConfirm" style="display: none;"></div>
+        <br /><br />
+      </div>
+
+      <p class="hidden">
+        <a href="#nav" title="Přejít na navigaci">navigace</a> |
+        <a href="#cnt" title="Přejít na obsah [klávesová zkratka Alt+S]">obsah</a>
+      </p>
+
+      <ul id="foot" title="Zápatí">
+        <li>2006 &ndash; 2026 &copy; Správa a údržba silnic Pardubického kraje</li>
+                <li><a href="accessibility.html" title="Odkaz na prohlášení o přístupnosti">Prohlášení o přístupnosti</a></li>
+        <li><a href="cookies.html" title="Informace o používání souborů cookies">Cookies</a></li>
+        <li><a href="manual.html" title="">Manuály</a></li>
+        <li class="last"><a href="https://ezak.cz/technicka-podpora" title="[v novém okně] Podpora a informace o E-ZAK" tabindex="704" class="new-window" onclick="window.open(this.href); return false;">QCM - Podpora</a></li>
+      </ul>
+
+    </div>
+    <div class="footer"></div>
+  </div>
+
+  <div style="float: right;" id="calendar-container"></div>
+
+  </body>
+
+
+</html>
+<!-- qcmmon state ok -->

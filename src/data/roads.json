@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-14T21:16:22.419Z",
-  "source": "resources/processed/pardubicky-kraj-apdos-candidates.tsv + resources/processed/regional-road-additions.json + resources/processed/regional-road-backfill-2026-06-14.json",
+  "generatedAt": "2026-06-14T22:13:57.804Z",
+  "source": "resources/processed/pardubicky-kraj-apdos-candidates.tsv + resources/processed/regional-road-additions.json + resources/processed/regional-road-backfill-2026-06-14.json + resources/processed/suspk-ezak-additions-2026-06-15.json",
   "roads": [
     {
       "id": "bojanov-most-ev-c-337-028-mostni-provizorium-001",
@@ -6201,11 +6201,86 @@
       "motorwayContext": false,
       "sourceDataset": "ksus-stredocesky-wp-coverage-audit",
       "sourceUrl": "https://ksus.cz/aktuality/spojnice-lounovic-pod-blanikem-a-kamberku-se-dockala-kompletni-rekonstrukce/"
+    },
+    {
+      "id": "iii-33742-hostalovice-brezinka-novy-dvur-311",
+      "completionYear": 2025,
+      "title": "Oprava silnice III/33742 Hošťalovice - křiž. III/33744 směr Nový Dvůr",
+      "road": "III/33742",
+      "roadClass": "III",
+      "status": "Plnění smlouvy ukončeno 01.07.2025",
+      "realizationFrom": "08/2024",
+      "realizationTo": "07/2025",
+      "lat": 49.931002,
+      "lon": 15.567256,
+      "locationQuality": "source",
+      "costExVat": 5724981,
+      "totalCost": 6927227,
+      "kind": "repair",
+      "drivingSegment": true,
+      "motorwayContext": false,
+      "sourceDataset": "suspk-ezak",
+      "sourceUrl": "https://ezak.suspk.cz/contract_display_1257.html",
+      "sourceNote": "E-ZAK contract P24V00000156; APDOS listed a similar III/33742 item as preparation, but E-ZAK shows closed fulfillment and paid 2025 amount. Field observation says the fresh surface runs from the Březinka junction toward the airport, while the remaining Nový Dvůr intravilán section is not finished.",
+      "geometryOverride": [
+        [
+          49.931814,
+          15.563776
+        ],
+        [
+          49.932158,
+          15.563428
+        ],
+        [
+          49.932971,
+          15.562909
+        ],
+        [
+          49.933382,
+          15.562548
+        ],
+        [
+          49.93478,
+          15.560953
+        ],
+        [
+          49.935217,
+          15.560632
+        ],
+        [
+          49.936393,
+          15.56011
+        ],
+        [
+          49.936789,
+          15.55981
+        ],
+        [
+          49.93782,
+          15.558243
+        ],
+        [
+          49.938096,
+          15.557576
+        ],
+        [
+          49.938301,
+          15.556324
+        ],
+        [
+          49.938603,
+          15.555599
+        ],
+        [
+          49.940811,
+          15.55269
+        ]
+      ]
     }
   ],
   "summary": {
-    "total": 310,
-    "mapped": 282,
+    "total": 311,
+    "mapped": 283,
     "placeholderLocation": 28,
     "years": [
       2020,

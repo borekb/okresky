@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T21:13:32.231Z",
+  "generatedAt": "2026-06-14T22:13:32.596Z",
   "source": "OpenStreetMap Overpass API",
   "overpassUrl": "https://overpass-api.de/api/interpreter",
   "rawPath": "resources/raw/osm/overpass-road-ways-2026-06-14.json",
@@ -10,12 +10,76 @@
     "note": "Matched by normalized OSM road ref and source point. This is more precise than synthetic display segments, but not yet manually verified project extents."
   },
   "summary": {
-    "candidates": 216,
+    "candidates": 217,
     "refs": 151,
-    "matched": 194,
+    "matched": 195,
     "unmatched": 22
   },
   "roads": {
+    "iii-33742-hostalovice-brezinka-novy-dvur-311": {
+      "source": "manual-osm-geometry",
+      "quality": "manual_project_extent",
+      "osmRef": "33742",
+      "wayIds": [],
+      "nearestDistanceMeters": 0,
+      "lengthMeters": 1322,
+      "geometry": [
+        [
+          [
+            49.931814,
+            15.563776
+          ],
+          [
+            49.932158,
+            15.563428
+          ],
+          [
+            49.932971,
+            15.562909
+          ],
+          [
+            49.933382,
+            15.562548
+          ],
+          [
+            49.93478,
+            15.560953
+          ],
+          [
+            49.935217,
+            15.560632
+          ],
+          [
+            49.936393,
+            15.56011
+          ],
+          [
+            49.936789,
+            15.55981
+          ],
+          [
+            49.93782,
+            15.558243
+          ],
+          [
+            49.938096,
+            15.557576
+          ],
+          [
+            49.938301,
+            15.556324
+          ],
+          [
+            49.938603,
+            15.555599
+          ],
+          [
+            49.940811,
+            15.55269
+          ]
+        ]
+      ]
+    },
     "d35-opatovice-casy-ii-298-sezemice-chotec-oprava-navozovych-tras-002": {
       "source": "openstreetmap-overpass",
       "quality": "matched_ref_near_source_point",
