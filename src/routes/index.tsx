@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { CalendarDays, ExternalLink, Filter, MapPinned, RouteIcon, Search } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { CalendarDays, ExternalLink, Filter, MapPinned, RouteIcon, Search, X } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { RoadMap } from '@/components/RoadMap';
 import rawRoadGeometries from '@/data/road-geometries.json';
@@ -122,7 +122,16 @@ function HomePage() {
 
   const mappedRoads = filteredRoads.filter((road) => road.locationQuality === 'source');
   const osmMatchedRoads = filteredRoads.filter((road) => roadGeometries.roads[road.id]);
-  const selectedRoad = filteredRoads.find((road) => road.id === selectedRoadId) ?? filteredRoads[0] ?? null;
+  const selectedRoad = selectedRoadId ? (filteredRoads.find((road) => road.id === selectedRoadId) ?? null) : null;
+  const toggleSelectedRoad = (roadId: string) => {
+    setSelectedRoadId((currentRoadId) => (currentRoadId === roadId ? null : roadId));
+  };
+
+  useEffect(() => {
+    if (selectedRoadId && !filteredRoads.some((road) => road.id === selectedRoadId)) {
+      setSelectedRoadId(null);
+    }
+  }, [filteredRoads, selectedRoadId]);
 
   return (
     <main className="app-shell">
@@ -208,9 +217,9 @@ function HomePage() {
           {filteredRoads.map((road) => (
             <button
               key={road.id}
-              className={road.id === selectedRoad?.id ? 'road-item selected' : 'road-item'}
+              className={road.id === selectedRoadId ? 'road-item selected' : 'road-item'}
               type="button"
-              onClick={() => setSelectedRoadId(road.id)}
+              onClick={() => toggleSelectedRoad(road.id)}
             >
               <span className="year-pill" style={{ background: yearColor(road.completionYear, yearRange) }}>
                 {road.completionYear}
@@ -232,8 +241,8 @@ function HomePage() {
           roads={mappedRoads}
           roadGeometries={roadGeometries.roads}
           yearRange={yearRange}
-          selectedRoadId={selectedRoad?.id ?? null}
-          onSelectRoad={setSelectedRoadId}
+          selectedRoadId={selectedRoadId}
+          onSelectRoad={toggleSelectedRoad}
         />
 
         {selectedRoad && (
@@ -250,6 +259,15 @@ function HomePage() {
               <a href={selectedRoad.sourceUrl} target="_blank" rel="noreferrer">
                 Zdroj <ExternalLink size={14} aria-hidden />
               </a>
+              <button
+                className="detail-close"
+                type="button"
+                onClick={() => setSelectedRoadId(null)}
+                aria-label="Zavřít detail silnice"
+                title="Zavřít detail"
+              >
+                <X size={16} aria-hidden />
+              </button>
             </div>
           </article>
         )}

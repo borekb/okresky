@@ -1,12 +1,46 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { Road } from '@/routes/index';
 
-type LeafletModule = typeof import('leaflet');
-type LeafletMap = import('leaflet').Map;
-type LayerGroup = import('leaflet').LayerGroup;
+type MapLibreModule = typeof import('maplibre-gl');
+type MapLibreMap = import('maplibre-gl').Map;
+type GeoJSONSource = import('maplibre-gl').GeoJSONSource;
+type MapLayerMouseEvent = import('maplibre-gl').MapLayerMouseEvent;
+type StyleSpecification = import('maplibre-gl').StyleSpecification;
 
 const PARDUBICE: [number, number] = [50.0343, 15.7812];
+const ROAD_SOURCE_ID = 'roads';
+const ROAD_OUTLINE_LAYER_ID = 'road-outlines';
+const ROAD_SOLID_LAYER_ID = 'road-segments';
+const ROAD_DASHED_LAYER_ID = 'road-segments-estimated';
+const INTERACTIVE_ROAD_LAYERS = [ROAD_SOLID_LAYER_ID, ROAD_DASHED_LAYER_ID] as const;
+
+const RASTER_STYLE: StyleSpecification = {
+  version: 8,
+  sources: {
+    osm: {
+      type: 'raster',
+      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+      tileSize: 256,
+      attribution: '&copy; OpenStreetMap',
+      maxzoom: 19,
+    },
+  },
+  layers: [
+    {
+      id: 'background',
+      type: 'background',
+      paint: {
+        'background-color': '#dbe2da',
+      },
+    },
+    {
+      id: 'osm',
+      type: 'raster',
+      source: 'osm',
+    },
+  ],
+};
 
 interface RoadGeometry {
   source: string;
@@ -16,6 +50,35 @@ interface RoadGeometry {
   nearestDistanceMeters: number;
   lengthMeters: number;
   geometry: [number, number][][];
+}
+
+interface RoadFeatureProperties {
+  color: string;
+  completionYear: number;
+  hasGeometry: boolean;
+  road: string;
+  roadId: string;
+  selected: boolean;
+  title: string;
+}
+
+interface RoadFeature {
+  type: 'Feature';
+  properties: RoadFeatureProperties;
+  geometry:
+    | {
+        type: 'LineString';
+        coordinates: [number, number][];
+      }
+    | {
+        type: 'MultiLineString';
+        coordinates: [number, number][][];
+      };
+}
+
+interface RoadFeatureCollection {
+  type: 'FeatureCollection';
+  features: RoadFeature[];
 }
 
 export function RoadMap({
@@ -32,9 +95,20 @@ export function RoadMap({
   onSelectRoad: (roadId: string) => void;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const leafletRef = useRef<LeafletModule | null>(null);
-  const mapRef = useRef<LeafletMap | null>(null);
-  const markerLayerRef = useRef<LayerGroup | null>(null);
+  const maplibreRef = useRef<MapLibreModule | null>(null);
+  const mapRef = useRef<MapLibreMap | null>(null);
+  const onSelectRoadRef = useRef(onSelectRoad);
+  const previousSelectedRoadIdRef = useRef<string | null>(selectedRoadId);
+  const [mapReady, setMapReady] = useState(false);
+
+  const roadFeatureCollection = useMemo(
+    () => buildRoadFeatureCollection(roads, roadGeometries, yearRange, selectedRoadId),
+    [roads, roadGeometries, selectedRoadId, yearRange],
+  );
+
+  useEffect(() => {
+    onSelectRoadRef.current = onSelectRoad;
+  }, [onSelectRoad]);
 
   useEffect(() => {
     let disposed = false;
@@ -42,31 +116,54 @@ export function RoadMap({
     async function setupMap() {
       if (!containerRef.current || mapRef.current) return;
 
-      const L = await import('leaflet');
+      const maplibregl = await import('maplibre-gl');
       if (disposed || !containerRef.current) return;
 
-      leafletRef.current = L;
+      maplibreRef.current = maplibregl;
 
-      const map = L.map(containerRef.current, {
+      const map = new maplibregl.Map({
         attributionControl: false,
-        preferCanvas: true,
-        zoomControl: false,
-      }).setView(PARDUBICE, 8);
-
-      L.control.zoom({ position: 'bottomright' }).addTo(map);
-      L.control
-        .attribution({ position: 'bottomleft', prefix: false })
-        .addAttribution('&copy; OpenStreetMap')
-        .addTo(map);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        center: [PARDUBICE[1], PARDUBICE[0]],
+        container: containerRef.current,
         maxZoom: 19,
-      }).addTo(map);
+        style: RASTER_STYLE,
+        zoom: 8,
+      });
 
-      markerLayerRef.current = L.layerGroup().addTo(map);
+      map.scrollZoom.setZoomRate(1 / 25);
+      map.scrollZoom.setWheelZoomRate(1 / 300);
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right');
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-left');
+
+      const handleRoadClick = (event: MapLayerMouseEvent) => {
+        const roadId = event.features?.[0]?.properties?.roadId;
+        if (typeof roadId === 'string') {
+          onSelectRoadRef.current(roadId);
+        }
+      };
+      const handleRoadMouseEnter = () => {
+        map.getCanvas().style.cursor = 'pointer';
+      };
+      const handleRoadMouseLeave = () => {
+        map.getCanvas().style.cursor = '';
+      };
+
+      map.on('load', () => {
+        if (disposed) return;
+
+        addRoadLayers(map, roadFeatureCollection);
+
+        for (const layerId of INTERACTIVE_ROAD_LAYERS) {
+          map.on('click', layerId, handleRoadClick);
+          map.on('mouseenter', layerId, handleRoadMouseEnter);
+          map.on('mouseleave', layerId, handleRoadMouseLeave);
+        }
+
+        fitRoads(maplibregl, map, roadFeatureCollection);
+        setMapReady(true);
+      });
+
       mapRef.current = map;
-      renderSegments(L, markerLayerRef.current, roads, roadGeometries, yearRange, selectedRoadId, onSelectRoad);
-      fitRoads(L, map, roads, roadGeometries);
     }
 
     setupMap();
@@ -75,119 +172,195 @@ export function RoadMap({
       disposed = true;
       mapRef.current?.remove();
       mapRef.current = null;
-      markerLayerRef.current = null;
+      setMapReady(false);
     };
   }, []);
 
   useEffect(() => {
-    const L = leafletRef.current;
-    const layer = markerLayerRef.current;
     const map = mapRef.current;
-    if (!L || !layer || !map) return;
+    if (!mapReady || !map) return;
 
-    renderSegments(L, layer, roads, roadGeometries, yearRange, selectedRoadId, onSelectRoad);
-  }, [roads, roadGeometries, yearRange, selectedRoadId, onSelectRoad]);
+    const source = map.getSource(ROAD_SOURCE_ID);
+    if (!source) return;
+
+    (source as GeoJSONSource).setData(roadFeatureCollection);
+  }, [mapReady, roadFeatureCollection]);
 
   useEffect(() => {
-    const L = leafletRef.current;
+    const maplibregl = maplibreRef.current;
     const map = mapRef.current;
-    if (!L || !map) return;
+    if (!mapReady || !maplibregl || !map) return;
 
-    fitRoads(L, map, roads, roadGeometries);
-  }, [roads, roadGeometries]);
+    const previousSelectedRoadId = previousSelectedRoadIdRef.current;
+    previousSelectedRoadIdRef.current = selectedRoadId;
+    if (selectedRoadId) return;
+
+    fitRoads(maplibregl, map, roadFeatureCollection, { animate: Boolean(previousSelectedRoadId) });
+  }, [mapReady, roadFeatureCollection, selectedRoadId]);
+
+  useEffect(() => {
+    const maplibregl = maplibreRef.current;
+    const map = mapRef.current;
+    if (!mapReady || !maplibregl || !map || !selectedRoadId) return;
+
+    const selectedFeature = roadFeatureCollection.features.find((feature) => feature.properties.roadId === selectedRoadId);
+    if (!selectedFeature) return;
+
+    flyToRoad(maplibregl, map, selectedFeature);
+  }, [mapReady, roadFeatureCollection, selectedRoadId]);
 
   return <div ref={containerRef} className="map-canvas" aria-label="Mapa rekonstruovaných silnic" />;
 }
 
-function renderSegments(
-  L: LeafletModule,
-  layer: LayerGroup,
+function addRoadLayers(map: MapLibreMap, data: RoadFeatureCollection) {
+  map.addSource(ROAD_SOURCE_ID, {
+    type: 'geojson',
+    data,
+  });
+
+  map.addLayer({
+    id: ROAD_OUTLINE_LAYER_ID,
+    type: 'line',
+    source: ROAD_SOURCE_ID,
+    layout: {
+      'line-cap': 'round',
+      'line-join': 'round',
+    },
+    paint: {
+      'line-color': ['case', ['boolean', ['get', 'selected'], false], '#0f172a', '#ffffff'],
+      'line-opacity': ['case', ['boolean', ['get', 'selected'], false], 0.92, 0.82],
+      'line-width': ['case', ['boolean', ['get', 'selected'], false], 12, 9],
+    },
+  });
+
+  map.addLayer({
+    id: ROAD_SOLID_LAYER_ID,
+    type: 'line',
+    source: ROAD_SOURCE_ID,
+    filter: ['==', ['get', 'hasGeometry'], true],
+    layout: {
+      'line-cap': 'round',
+      'line-join': 'round',
+    },
+    paint: {
+      'line-color': ['get', 'color'],
+      'line-opacity': ['case', ['boolean', ['get', 'selected'], false], 1, 0.86],
+      'line-width': ['case', ['boolean', ['get', 'selected'], false], 7, 5],
+    },
+  });
+
+  map.addLayer({
+    id: ROAD_DASHED_LAYER_ID,
+    type: 'line',
+    source: ROAD_SOURCE_ID,
+    filter: ['==', ['get', 'hasGeometry'], false],
+    layout: {
+      'line-cap': 'round',
+      'line-join': 'round',
+    },
+    paint: {
+      'line-color': ['get', 'color'],
+      'line-dasharray': [1.2, 1.6],
+      'line-opacity': ['case', ['boolean', ['get', 'selected'], false], 1, 0.86],
+      'line-width': ['case', ['boolean', ['get', 'selected'], false], 7, 5],
+    },
+  });
+}
+
+function buildRoadFeatureCollection(
   roads: Road[],
   roadGeometries: Record<string, RoadGeometry>,
   yearRange: { min: number; max: number },
   selectedRoadId: string | null,
-  onSelectRoad: (roadId: string) => void,
-) {
-  layer.clearLayers();
+): RoadFeatureCollection {
+  return {
+    type: 'FeatureCollection',
+    features: roads.map((road) => {
+      const roadGeometry = roadGeometries[road.id];
+      const paths = roadGeometry?.geometry ?? [estimatedSegmentPath(road)];
+      const coordinates = paths.map((path) => path.map(([lat, lon]) => [lon, lat] as [number, number]));
 
-  for (const road of roads) {
-    const selected = road.id === selectedRoadId;
-    const color = yearColor(road.completionYear, yearRange);
-    const roadGeometry = roadGeometries[road.id];
-    const paths = roadGeometry?.geometry ?? [estimatedSegmentPath(road)];
-    const outline = L.polyline(paths, {
-      color: selected ? '#0f172a' : '#ffffff',
-      opacity: selected ? 0.92 : 0.82,
-      weight: selected ? 12 : 9,
-      lineCap: 'round',
-      lineJoin: 'round',
-    });
-    const segment = L.polyline(paths, {
-      color,
-      opacity: selected ? 1 : 0.86,
-      weight: selected ? 7 : 5,
-      lineCap: 'round',
-      lineJoin: 'round',
-      dashArray: roadGeometry ? undefined : '6 8',
-    });
-
-    segment.bindPopup(popupHtml(road, roadGeometry), {
-      closeButton: false,
-      className: 'road-popup',
-      maxWidth: 320,
-    });
-    segment.bindTooltip(road.title, {
-      direction: 'top',
-      offset: [0, -8],
-      opacity: 0.92,
-    });
-    segment.on('click', () => onSelectRoad(road.id));
-    outline.on('click', () => onSelectRoad(road.id));
-    outline.addTo(layer);
-    segment.addTo(layer);
-  }
+      return {
+        type: 'Feature',
+        properties: {
+          color: yearColor(road.completionYear, yearRange),
+          completionYear: road.completionYear,
+          hasGeometry: Boolean(roadGeometry),
+          road: road.road,
+          roadId: road.id,
+          selected: road.id === selectedRoadId,
+          title: road.title,
+        },
+        geometry:
+          coordinates.length === 1
+            ? {
+                type: 'LineString',
+                coordinates: coordinates[0] ?? [],
+              }
+            : {
+                type: 'MultiLineString',
+                coordinates,
+              },
+      };
+    }),
+  };
 }
 
-function fitRoads(L: LeafletModule, map: LeafletMap, roads: Road[], roadGeometries: Record<string, RoadGeometry>) {
-  if (roads.length === 0) {
-    map.setView(PARDUBICE, 8);
+function fitRoads(
+  maplibregl: MapLibreModule,
+  map: MapLibreMap,
+  roadFeatures: RoadFeatureCollection,
+  options: { animate?: boolean } = {},
+) {
+  const bounds = roadBounds(maplibregl, roadFeatures.features);
+  if (!bounds) {
+    if (options.animate) {
+      map.easeTo({ center: [PARDUBICE[1], PARDUBICE[0]], duration: 650, zoom: 8 });
+    } else {
+      map.jumpTo({ center: [PARDUBICE[1], PARDUBICE[0]], zoom: 8 });
+    }
     return;
   }
 
-  const points = roads.flatMap((road) => roadBoundsPoints(road, roadGeometries[road.id]));
-  const bounds = L.latLngBounds(points);
-  map.fitBounds(bounds.pad(0.18), {
-    animate: false,
-    maxZoom: roads.length === 1 ? 12 : 11,
+  map.fitBounds(bounds, {
+    animate: options.animate ?? false,
+    duration: options.animate ? 650 : 0,
+    maxZoom: roadFeatures.features.length === 1 ? 12 : 11,
+    padding: 72,
   });
 }
 
-function popupHtml(road: Road, geometry: RoadGeometry | undefined) {
-  const dates = [road.realizationFrom, road.realizationTo].filter(Boolean).join(' - ');
+function flyToRoad(maplibregl: MapLibreModule, map: MapLibreMap, road: RoadFeature) {
+  const bounds = roadBounds(maplibregl, [road]);
+  if (!bounds) return;
 
-  return `
-    <div class="road-popup-content">
-      <strong>${escapeHtml(road.title)}</strong>
-      <span>${escapeHtml(road.road)} · ${road.completionYear}</span>
-      ${dates ? `<span>${escapeHtml(dates)}</span>` : ''}
-      <span>${geometry ? `OSM ref ${escapeHtml(geometry.osmRef)} · ${geometry.lengthMeters} m` : 'Odhad z APDOS bodu'}</span>
-    </div>
-  `;
+  map.fitBounds(bounds, {
+    duration: 900,
+    easing: (progress) => progress,
+    maxZoom: 13.5,
+    padding: {
+      bottom: 150,
+      left: 72,
+      right: 72,
+      top: 72,
+    },
+  });
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
+function roadBounds(maplibregl: MapLibreModule, features: RoadFeature[]) {
+  const coordinates = features.flatMap((feature) => featureCoordinates(feature));
+  if (coordinates.length === 0) return null;
+
+  return coordinates.reduce(
+    (bounds, coordinate) => bounds.extend(coordinate),
+    new maplibregl.LngLatBounds(coordinates[0], coordinates[0]),
+  );
 }
 
-function roadBoundsPoints(road: Road, geometry: RoadGeometry | undefined) {
-  if (!geometry) return [[road.lat, road.lon] as [number, number]];
+function featureCoordinates(feature: RoadFeature): [number, number][] {
+  if (feature.geometry.type === 'LineString') return feature.geometry.coordinates;
 
-  return geometry.geometry.flat();
+  return feature.geometry.coordinates.flat();
 }
 
 function estimatedSegmentPath(road: Road): [[number, number], [number, number]] {
