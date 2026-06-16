@@ -15,6 +15,15 @@ Scope includes roads I., II. and III. class, plus lower local roads only when th
 - Prefer machine-readable sources first, then official regional pages, then press releases and project pages.
 - Treat extracted rows as candidates until they are classified as one of: reconstruction, surface repair, bridge/structure, intersection, bypass/new construction, or out of scope.
 
+## Czech vs. English Guidelines
+
+- **Code**: English (variable names, function names, comments).
+- **Agent instructions** (AGENTS.md, CLAUDE.md, skills): English.
+- **Other .md documents** (README, docs, research notes, etc.): Czech.
+- **UI text**: Czech (user-facing strings, labels, error messages).
+- **Git commits**: English.
+- **Chat with the developer**: Czech.
+
 ## Current useful sources
 
 - Pardubicky kraj APDOS map: static JSON at `<https://apdos.roadmedia.cz/json/data-pardubice.json>`.
