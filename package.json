@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite dev",
-    "dev:portless": "portless \"$(git branch --show-current | tr '/' '-').okresky\" pnpm dev",
+    "dev:portless": "PORTLESS_PORT=1355 portless \"$(git branch --show-current | tr '/' '-').okresky\" pnpm dev",
     "build": "pnpm data:roads && vite build",
     "preview": "vite preview",
     "data:roads": "node scripts/build-road-data.mjs",
