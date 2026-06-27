@@ -159,6 +159,35 @@ h2 {
   background: #fff;
 }
 
+.area-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.area-chip {
+  min-width: 0;
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid #d8d4ca;
+  border-radius: 8px;
+  color: #3b4658;
+  font-size: 0.82rem;
+  font-weight: 750;
+  background: #fff;
+}
+
+.area-chip:hover {
+  border-color: #9aa39e;
+}
+
+.area-chip.selected {
+  border-color: #0f766e;
+  color: #fff;
+  background: #0f766e;
+  box-shadow: 0 8px 20px rgb(15 118 110 / 18%);
+}
+
 .kind-tabs {
   display: flex;
   gap: 6px;
@@ -306,6 +335,16 @@ h2 {
   font-size: 0.78rem;
   font-weight: 800;
   text-align: center;
+}
+
+.empty-list {
+  margin: 10px 8px 0 0;
+  padding: 12px;
+  border: 1px solid #d8d4ca;
+  border-radius: 8px;
+  color: #687080;
+  font-size: 0.88rem;
+  background: #fff;
 }
 
 .map-region {

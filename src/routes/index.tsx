@@ -8,6 +8,7 @@ import rawRoadData from '@/data/roads.json';
 
 export type RoadKind = 'bridge' | 'connector' | 'intersection' | 'other' | 'reconstruction' | 'repair' | 'structure';
 export type RoadClass = 'I' | 'II' | 'III' | 'other';
+type AreaPresetId = 'all' | 'orlicke-hory' | 'zelezne-hory';
 
 export interface Road {
   id: string;
@@ -83,11 +84,50 @@ const ROAD_CLASS_LABELS: Record<RoadClass | 'all', string> = {
   other: 'Ostatní',
 };
 
+const AREA_PRESETS: Array<{
+  id: AreaPresetId;
+  label: string;
+  polygon: Array<[number, number]> | null;
+}> = [
+  {
+    id: 'all',
+    label: 'Vše',
+    polygon: null,
+  },
+  {
+    id: 'zelezne-hory',
+    label: 'Železné hory',
+    polygon: [
+      [49.64, 15.44],
+      [49.65, 15.72],
+      [49.77, 16.02],
+      [49.88, 16.04],
+      [49.98, 15.88],
+      [50.03, 15.52],
+      [49.92, 15.43],
+    ],
+  },
+  {
+    id: 'orlicke-hory',
+    label: 'Orlické hory',
+    polygon: [
+      [50.0, 16.2],
+      [49.94, 16.38],
+      [49.98, 16.68],
+      [50.13, 16.76],
+      [50.32, 16.58],
+      [50.35, 16.27],
+      [50.12, 16.15],
+    ],
+  },
+];
+
 export const Route = createFileRoute('/')({
   component: HomePage,
 });
 
 function HomePage() {
+  const [areaPreset, setAreaPreset] = useState<AreaPresetId>('all');
   const [year, setYear] = useState<number | 'all'>('all');
   const [roadClass, setRoadClass] = useState<RoadClass | 'all'>('all');
   const [query, setQuery] = useState('');
@@ -104,8 +144,11 @@ function HomePage() {
   const normalizedQuery = query.trim().toLocaleLowerCase('cs-CZ');
 
   const filteredRoads = useMemo(() => {
+    const areaPolygon = AREA_PRESETS.find((preset) => preset.id === areaPreset)?.polygon ?? null;
+
     return roadData.roads.filter((road) => {
       if (!showNonSegments && !road.drivingSegment) return false;
+      if (areaPolygon && !pointInPolygon([road.lat, road.lon], areaPolygon)) return false;
       if (year !== 'all' && road.completionYear !== year) return false;
       if (roadClass !== 'all' && road.roadClass !== roadClass) return false;
       if (!includeMotorwayContext && road.motorwayContext) return false;
@@ -118,7 +161,7 @@ function HomePage() {
 
       return true;
     });
-  }, [includeMotorwayContext, normalizedQuery, roadClass, showNonSegments, year]);
+  }, [areaPreset, includeMotorwayContext, normalizedQuery, roadClass, showNonSegments, year]);
 
   const mappedRoads = filteredRoads.filter((road) => road.locationQuality === 'source');
   const osmMatchedRoads = filteredRoads.filter((road) => roadGeometries.roads[road.id]);
@@ -155,6 +198,20 @@ function HomePage() {
               placeholder="Hledat silnici, obec, číslo..."
             />
           </label>
+
+          <div className="area-tabs" role="group" aria-label="Oblast">
+            {AREA_PRESETS.map((preset) => (
+              <button
+                key={preset.id}
+                aria-pressed={preset.id === areaPreset}
+                className={preset.id === areaPreset ? 'area-chip selected' : 'area-chip'}
+                type="button"
+                onClick={() => setAreaPreset(preset.id)}
+              >
+                {preset.label}
+              </button>
+            ))}
+          </div>
 
           <div className="control-row">
             <label>
@@ -214,25 +271,29 @@ function HomePage() {
         </section>
 
         <section className="road-list" aria-label="Seznam silnic">
-          {filteredRoads.map((road) => (
-            <button
-              key={road.id}
-              className={road.id === selectedRoadId ? 'road-item selected' : 'road-item'}
-              type="button"
-              onClick={() => toggleSelectedRoad(road.id)}
-            >
-              <span className="year-pill" style={{ background: yearColor(road.completionYear, yearRange) }}>
-                {road.completionYear}
-              </span>
-              <span className="road-item-body">
-                <strong>{road.title}</strong>
-                <span>
-                  {road.road} · {KIND_LABELS[road.kind]} ·{' '}
-                  {road.locationQuality === 'source' ? 'ověřená poloha' : 'neověřená poloha'}
+          {filteredRoads.length > 0 ? (
+            filteredRoads.map((road) => (
+              <button
+                key={road.id}
+                className={road.id === selectedRoadId ? 'road-item selected' : 'road-item'}
+                type="button"
+                onClick={() => toggleSelectedRoad(road.id)}
+              >
+                <span className="year-pill" style={{ background: yearColor(road.completionYear, yearRange) }}>
+                  {road.completionYear}
                 </span>
-              </span>
-            </button>
-          ))}
+                <span className="road-item-body">
+                  <strong>{road.title}</strong>
+                  <span>
+                    {road.road} · {KIND_LABELS[road.kind]} ·{' '}
+                    {road.locationQuality === 'source' ? 'ověřená poloha' : 'neověřená poloha'}
+                  </span>
+                </span>
+              </button>
+            ))
+          ) : (
+            <p className="empty-list">Pro zadané filtry tu zatím není žádný úsek.</p>
+          )}
         </section>
       </aside>
 
@@ -306,6 +367,27 @@ function formatYearSpan(roads: Road[]) {
   const max = Math.max(...years);
 
   return min === max ? String(min) : `${min}-${max}`;
+}
+
+function pointInPolygon(point: [number, number], polygon: Array<[number, number]>) {
+  const [lat, lon] = point;
+  let inside = false;
+
+  for (let currentIndex = 0, previousIndex = polygon.length - 1; currentIndex < polygon.length; previousIndex = currentIndex++) {
+    const [currentLat, currentLon] = polygon[currentIndex]!;
+    const [previousLat, previousLon] = polygon[previousIndex]!;
+    const crossesLongitude = currentLon > lon !== previousLon > lon;
+
+    if (!crossesLongitude) continue;
+
+    const edgeLat = ((previousLat - currentLat) * (lon - currentLon)) / (previousLon - currentLon) + currentLat;
+
+    if (lat < edgeLat) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
 }
 
 function yearColor(year: number, range: { min: number; max: number }) {
